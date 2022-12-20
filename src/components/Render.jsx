@@ -13,7 +13,7 @@ import helper from './helper'
 // SETAR VALORES
 
 const authorization = 'jwt-token'
-const endpoint = 'https://gateway-sandbox.worksmarter.com.br/graphql'
+const endpoint = 'endpoint'
 const valueId = 35922
 
 export const Render = () => {
@@ -68,7 +68,7 @@ export const Render = () => {
       body: JSON.stringify({
         query: `
         {
-          financialLaunchIndex(query: {match: {id: ${id} }}) {
+          someQuery(query: {match: {id: ${id} }}) {
             payload
             errors {
               messages
