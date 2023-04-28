@@ -19,9 +19,11 @@ const variables = {
     must: [{
         bool: {
           should: [
+            // REALIZADO
             { match: { status: 'partially_paid' } },
             { match: { status: 'paid' } },
             { match: { status: 'conciliated' } },
+            // EM ABERTO
             { match: { status: 'open' } },
           ],
         },
@@ -42,6 +44,7 @@ const variables = {
           }
         }
       },
+      // CASO FOR REALIZADO
       // {
       //   nested: {
       //     path: "downs",
