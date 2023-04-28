@@ -8,7 +8,7 @@ import { mustacheMethods } from './mustacheMethods'
 
 const authorization = '' // jwt token
 
-const endpoint = 'https://gateway-sandbox.worksmarter.com.br/graphql'
+const endpoint = '' // adicionar endpoint
 const templateId = 185 // resumido(synthetic): 185, detalhado(analytics): 98
 const htmlEndpoint = 'cash-flow/synthetic.html'
 const helperEndpoint = 'cash-flow/synthetic.js'
