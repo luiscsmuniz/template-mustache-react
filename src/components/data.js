@@ -1,7 +1,8 @@
 export const tokenData = {
   tokenData: {
     uid: 1,
-    name: "nome",
+    name: "Luis Carlos",
+    surname: "de Souza",
     email: "email@gett.com.br",
     account: "gettpro",
     privacy_policy_version: 1,

@@ -1,26 +1,83 @@
 import { useState, useEffect } from 'react'
 import ReactMustache from 'react-mustache'
 import Frame from 'react-frame-component/'
-import CodeMirror from '@uiw/react-codemirror'
-import 'codemirror/keymap/sublime'
-import 'codemirror/theme/monokai.css'
-import { sublime } from '@uiw/codemirror-theme-sublime'
-import { html } from '@codemirror/lang-html'
 import { tokenData } from './data'
 import { mustacheMethods } from './mustacheMethods'
-import helper from './helper'
 
 // SETAR VALORES
 
-const authorization = 'jwt-token'
-const endpoint = 'endpoint'
-const valueId = 35922
+const authorization = '' // jwt token
+
+const endpoint = 'https://gateway-sandbox.worksmarter.com.br/graphql'
+const templateId = 185 // resumido(synthetic): 185, detalhado(analytics): 98
+const htmlEndpoint = 'cash-flow/synthetic.html'
+const helperEndpoint = 'cash-flow/synthetic.js'
+const optionsEndpoint = 'cash-flow/synthetic.json'
+
+const variables = {
+  query: JSON.stringify({
+    must: [{
+        bool: {
+          should: [
+            { match: { status: 'partially_paid' } },
+            { match: { status: 'paid' } },
+            { match: { status: 'conciliated' } },
+            { match: { status: 'open' } },
+          ],
+        },
+      },
+      {
+        bool: {
+          should: [
+            { match: { launch_operation: 'payable_account' } },
+            { match: { launch_operation: 'receivable_account' } },
+          ],
+        },
+      },
+      {
+        range: {
+          due_date: {
+            gte: "2023-01-01",
+            lte: "2023-04-30",
+          }
+        }
+      },
+      // {
+      //   nested: {
+      //     path: "downs",
+      //     query: {
+      //       bool: {
+      //         must: [
+      //           {
+      //             exists: {
+      //               field: "downs.id"
+      //             }
+      //           },
+      //           {
+      //             range: {
+      //               'downs.down_date': {
+      //                 gte: "2023-03-01",
+      //                 lte: "2023-04-01",
+      //               }
+      //             }
+      //           }
+      //         ]
+      //       }
+      //     }
+      //   }
+      // }
+    ],
+    must_not: [{
+      exists: {
+        field: 'deleted_at',
+      },
+    }],
+  }),
+}
 
 export const Render = () => {
-  const [value, onChange] = useState('')
-  const [input, inputOnchange] = useState(valueId)
-  const [render, renderOnChange] = useState('')
   const [templateData, setData] = useState(null)
+  const [htmlCodeInput, setHtmlCodeInput] = useState('')
 
   const getTemplate = async () => {
     const response = await fetch(endpoint, {
@@ -34,7 +91,7 @@ export const Render = () => {
           {
             showTemplate(where: {
               id: {
-                eq: 53
+                eq: ${templateId}
               }
             }) {
               payload {
@@ -46,19 +103,15 @@ export const Render = () => {
             }
           }
         `,
-        variables: {},
       })
     })
 
     const { data: { showTemplate: { payload } } } = await response.json()
 
-    const { code } = payload[0]
-
-    onChange(code)
-    renderOnChange(code)
+    return payload[0]
   }
 
-  const getQuery = async (id) => {
+  const getQuery = async (query) => {
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -66,31 +119,51 @@ export const Render = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query: `
-        {
-          someQuery(query: {match: {id: ${id} }}) {
-            payload
-            errors {
-              messages
-            }
-          }
-        }
-      ` })
+        query,
+        variables,
+      })
     })
 
     const { data } = await response.json()
-    // eslint-disable-next-line no-eval
-    const executeHelper = eval(helper)
 
-    const getHelperData = await executeHelper({ data, authorization, endpoint: endpoint })
+    // eslint-disable-next-line no-eval
+    const executeHelper = eval(await helperCode())
+    const options = JSON.parse(await optionsCode())
+
+    const getHelperData = await executeHelper({ data, authorization, endpoint: endpoint, options })
 
     setData(getHelperData)
   }
 
+  const htmlCode = async () => {
+    const response = await fetch(`http://localhost:3000/templates/${htmlEndpoint}`)
+
+    const data = await response.text()
+
+    setHtmlCodeInput(data)
+  }
+
+  const helperCode = async () => {
+    const response = await fetch(`http://localhost:3000/templates/${helperEndpoint}`)
+
+    const data = await response.text()
+
+    return data
+  }
+
+  const optionsCode = async () => {
+    const response = await fetch(`http://localhost:3000/templates/${optionsEndpoint}`)
+
+    const data = await response.text()
+
+    return data
+  }
+
   useEffect(() => {
     const execute = async () => {
-      await getTemplate()
-      await getQuery(input)
+      const template = await getTemplate()
+      await getQuery(template.query)
+      await htmlCode()
     }
     execute()
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -100,29 +173,9 @@ export const Render = () => {
 
   return (
     <div className="row">
-      <div className="col-6" style={{ fontSize: '10px' }}>
-        <Editor value={value} onChange={onChange} />
-        <input value={input} onChange={(e) => inputOnchange(e.target.value)} />
-        <button
-          className="btn btn-info"
-          onClick={async () => {
-            await getQuery(input)
-          }}
-        >
-          Executar
-        </button>
-
-        <button
-          className="btn btn-info ml-2"
-          onClick={async () => {
-            await getTemplate()
-          }}
-        >
-          Reload
-        </button>
-      </div>
-      <div className="col-6">
+      <div className="col-12">
         <Frame
+          id="template"
           width="100%"
           height="900px"
           style={{
@@ -132,35 +185,9 @@ export const Render = () => {
             backgroundColor: '#fff',
           }}
         >
-          <ReactMustache template={render} data={{ ...templateData, ...mustacheMethods, ...tokenData }} />
-
+          <ReactMustache template={htmlCodeInput} data={{ ...templateData, ...mustacheMethods, ...tokenData }} />
         </Frame>
-
-        <button
-          className="btn btn-success"
-          onClick={() => renderOnChange(value)}
-        >
-          Render
-        </button>
       </div>
     </div>
   )
 }
-
-const Editor = ({ value, onChange }) => (
-  <CodeMirror
-    value={value}
-    onChange={onChange}
-    theme={sublime}
-    extensions={[html()]}
-    height="900px"
-    options={{
-      theme: 'monokai',
-      lineNumbers: true,
-      tabSize: 2,
-      indentWithTabs: true,
-      mode: 'text/html',
-      smartIndent: true,
-    }}
-  />
-)

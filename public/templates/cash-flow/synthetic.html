@@ -1,0 +1,164 @@
+<html dir="ltr" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>Relatório - Gett Pro</title>
+    <link rel="stylesheet" media="all" href="https://sandbox.worksmarter.com.br/report.css">
+  </head>
+  <body class="report">
+      <div class="wrapper">
+      {{#financialLaunchIndex}}
+      <table class="cash_flow">
+        <thead class="fixed">
+          <tr>
+            <th></th>
+            {{#th}}
+              <th colspan="2">{{column}}</th>
+            {{/th}}
+            <th colspan="3">TOTAL (R$)</th>
+          </tr>
+          <tr>
+            <th></th>
+            {{#th}}
+              <th>PREV. (R$)</th>
+              <th>REAL. (R$)</th>
+            {{/th}}
+            <th>PREV. (R$)</th>
+            <th>REAL. (R$)</th>
+            <th>DIF. (R$)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#showBalance}}
+            <tr>
+              <td>SALDO INICIAL</td>
+              <td class="money">{{#valueFormatter}}{{estimatedBalance}}{{/valueFormatter}}</td>
+              <td class="money">{{#valueFormatter}}{{realizedBalance}}{{/valueFormatter}}</td>
+              {{#thInitialBalance}}
+                <td class="money">{{#valueFormatter}}{{sumEstimatedBalance}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{sumRealizedBalance}}{{/valueFormatter}}</td>
+              {{/thInitialBalance}}
+              {{#totalBalance}}
+                <td class="money_total_all">{{#valueFormatter}}{{sumEstimatedBalance}}{{/valueFormatter}}</td>
+                <td class="money_total_all">{{#valueFormatter}}{{sumRealizedBalance}}{{/valueFormatter}}</td>
+                <td class="money_total_all">{{#valueFormatter}}{{diff}}{{/valueFormatter}}</td>
+              {{/totalBalance}}
+            </tr>
+          {{/showBalance}}
+          <tr class="bold receitas">
+            <td colspan="{{colspan}}">RECEITAS</td>
+          </tr>
+          {{#receivableTd}}
+            <tr>
+              <td>{{plan_account_name}}</td>
+              {{#td}}
+                <td class="money">{{#valueFormatter}}{{estimated}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{realized}}{{/valueFormatter}}</td>
+              {{/td}}
+              <td class="money_total_all">{{#valueFormatter}}{{subTotalEstimated}}{{/valueFormatter}}</td>
+              <td class="money_total_all">{{#valueFormatter}}{{subTotalRealized}}{{/valueFormatter}}</td>
+              <td class="money_total_all">{{#valueFormatter}}{{diff}}{{/valueFormatter}}</td>
+            </tr>
+          {{/receivableTd}}
+          <tr class="total bold">
+            <td>SUB-TOTAL (R$)</td>
+              {{#subTotalReceivableAccount}}
+                <td class="money">{{#valueFormatter}}{{estimated}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{realized}}{{/valueFormatter}}</td>
+              {{/subTotalReceivableAccount}}
+              <td class="money_total_all">{{#valueFormatter}}{{sumSubTotalReceivableEstimated}}{{/valueFormatter}}</td>
+              <td class="money_total_all">{{#valueFormatter}}{{sumSubTotalReceivableRealized}}{{/valueFormatter}}</td>
+              <td class="money_total_all">{{#valueFormatter}}{{diffReceivable}}{{/valueFormatter}}</td>
+          </tr>
+          <tr class="bold despesas">
+            <td colspan="{{colspan}}">DESPESAS</td>
+          </tr>
+          {{#payableTd}}
+            <tr>
+              <td>{{plan_account_name}}</td>
+              {{#td}}
+                <td class="money">{{#valueFormatter}}{{estimated}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{realized}}{{/valueFormatter}}</td>
+              {{/td}}
+              <td class="money_total_all">{{#valueFormatter}}{{subTotalEstimated}}{{/valueFormatter}}</td>
+              <td class="money_total_all">{{#valueFormatter}}{{subTotalRealized}}{{/valueFormatter}}</td>
+              <td class="money_total_all">{{#valueFormatter}}{{diff}}{{/valueFormatter}}</td>
+            </tr>
+          {{/payableTd}}
+      
+          <tr class="total bold">
+            <td>SUB-TOTAL (R$)</td>
+              {{#subTotalPayableAccount}}
+                <td class="money">{{#valueFormatter}}{{estimated}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{realized}}{{/valueFormatter}}</td>
+              {{/subTotalPayableAccount}}
+              <td class="money_total_all">{{#valueFormatter}}{{sumSubTotalPayableEstimated}}{{/valueFormatter}}</td>
+              <td class="money_total_all">{{#valueFormatter}}{{sumSubTotalPayableRealized}}{{/valueFormatter}}</td>
+              <td class="money_total_all">{{#valueFormatter}}{{diffPayable}}{{/valueFormatter}}</td>
+          </tr>
+          <tr class="bold resultados">
+            <td colspan="{{colspan}}">RESULTADO</td>
+          </tr>
+          <tr class="total bold">
+            <td>SALDO OPERACIONAL (R$)</td>
+              {{#operatingBalance}}
+                <td class="money">{{#valueFormatter}}{{estimated}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{realized}}{{/valueFormatter}}</td>
+              {{/operatingBalance}}
+              <td class="money_total_all">{{#valueFormatter}}{{operatingBalanceEstimated}}{{/valueFormatter}}</td>
+              <td class="money_total_all">{{#valueFormatter}}{{operatingBalanceRealized}}{{/valueFormatter}}</td>
+              <td class="money_total_all">{{#valueFormatter}}{{operatingBalanceDiff}}{{/valueFormatter}}</td>
+          </tr>
+          {{#showBalance}}
+            <tr class="total bold">
+              <td>SALDO FINAL (R$)</td>
+                {{#thFinalBalance}}
+                  <td class="money">{{#valueFormatter}}{{sumEstimatedBalance}}{{/valueFormatter}}</td>
+                  <td class="money">{{#valueFormatter}}{{sumRealizedBalance}}{{/valueFormatter}}</td>
+                {{/thFinalBalance}}
+                {{#totalBalance}}
+                  <td class="money_total_all">{{#valueFormatter}}{{sumEstimatedBalance}}{{/valueFormatter}}</td>
+                  <td class="money_total_all">{{#valueFormatter}}{{sumRealizedBalance}}{{/valueFormatter}}</td>
+                  <td class="money_total_all">{{#valueFormatter}}{{diff}}{{/valueFormatter}}</td>
+                {{/totalBalance}}
+            </tr>
+            <tr class="total bold">
+              <td>DIF. (R$)</td>
+              {{#thFinalBalance}}
+                <td class="money" colspan="2">{{#valueFormatter}}{{diff}}{{/valueFormatter}}</td>
+              {{/thFinalBalance}}
+              <td class="money_total_all"></td>
+              <td class="money_total_all"></td>
+              <td class="money_total_all"></td>
+            </tr>
+          {{/showBalance}}
+        </tbody>
+      </table>
+      {{/financialLaunchIndex}}
+      {{^financialLaunchIndex}}
+      <table>
+        <thead class="frozen">
+          <tr class="tr_frozen tr_frozen_0">
+            <th style="min-width: 1297.39px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 1297.39px;"></div></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Houve um problema ao buscar os dados</td>
+            </tr>
+          </tbody>
+      </table>
+      {{/financialLaunchIndex}}
+    </div>
+
+    <div class="footer">
+      <table>
+        <tbody>
+          <tr>
+            <td width="79"><img alt="Gett Pro" src="https://sandbox.worksmarter.com.br/logo-gett.svg"></td>
+            <td>Gerado em <strong id="datetime">{{#getFullDate}}{{/getFullDate}}</strong> por <strong>{{tokenData.name}} {{tokenData.surname}}</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+	</body>
+</html>

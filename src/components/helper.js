@@ -1,6 +1,3 @@
-const helper = async ({ data, authorization, endpoint }) => {
-  
+export const helper = async ({ data, authorization, endpoint, options }) => {
   return data
 }
-
-export default helper.toString()

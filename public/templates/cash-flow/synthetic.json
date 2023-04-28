@@ -1,0 +1,8 @@
+{
+  "showBalance": true,
+  "showBy": {
+    "value": "month",
+    "label": "Mês"
+  },
+  "conciliatedOnly": false
+}

@@ -1,0 +1,210 @@
+<html dir="ltr" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>Relatório - Gett Pro</title>
+    <link rel="stylesheet" media="all" href="https://sandbox.worksmarter.com.br/report.css">
+  </head>
+  <body class="report">
+      <div class="wrapper">
+      {{#financialLaunchIndex}}
+        <table class="cash_flow">
+          <thead class="frozen fixed">
+            {{#showBalance}}
+              <tr class="let-it-go">
+                <td class="bold" style="text-align:right" colspan="{{balanceColspan}}">Saldo inicial (R$)</td>
+                
+                {{#reportStatusOpen}}
+                  <td class="money bold">{{#valueFormatter}}{{estimatedBalance}}{{/valueFormatter}}</td>
+                {{/reportStatusOpen}}
+                {{#reportStatusRealized}}
+                  <td class="money bold">{{#valueFormatter}}{{realizedBalance}}{{/valueFormatter}}</td>
+                {{/reportStatusRealized}}
+              </tr>
+            {{/showBalance}}
+            <tr class="tr_frozen tr_frozen_0">
+              <th colspan="{{launchColspan}}" style="min-width: 943.781px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 943.781px;">Lançamento</div></th>
+              <th colspan="3" style="min-width: 422.328px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 422.328px;">Pagamento/Recebimento</div></th>
+              {{#showBalance}}
+                {{#reportStatusOpen}}
+                  <th colspan="1"></th>
+                {{/reportStatusOpen}}              
+                {{#reportStatusRealized}}
+                  <th colspan="1"></th>
+                {{/reportStatusRealized}}
+              {{/showBalance}}
+            </tr>
+            <tr class="tr_frozen tr_frozen_1">
+              <th style="min-width: 66.0156px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 66.0156px;">Descrição</div></th>
+              {{^groupedByEntity}}
+              <th colspan="3" style="min-width: 181px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 181px;">Entidade</div></th>
+              {{/groupedByEntity}}
+              {{^groupedByPlanAccount}}
+              <th colspan="2" style="min-width: 105.531px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 105.531px;">Plano de Contas</div></th>
+              {{/groupedByPlanAccount}}
+              {{^groupedByCostCenter}}
+              <th style="min-width: 52.3594px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 52.3594px;">C. Custo</div></th>
+              {{/groupedByCostCenter}}
+              {{^groupedByCustomsClearance}}
+              <th style="min-width: 87.4062px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 87.4062px;">Desembaraço</div></th>
+              {{/groupedByCustomsClearance}}
+              <th style="min-width: 64.1719px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 64.1719px;">Embarque</div></th>
+              {{^groupedByProject}}
+              <th style="min-width: 52.375px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 52.375px;">Projeto</div></th>
+              {{/groupedByProject}}
+              <th class="money column_60" style="min-width: 73.1406px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 73.1406px;">Vencimento</div></th>
+              
+              <th class="money column_100" style="min-width: 73.9531px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 73.9531px;">A Pagar (R$)</div></th>
+              <th class="money column_100" style="min-width: 88.8281px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 88.8281px;">A Receber (R$)</div></th>
+              <th class="money column_100" style="min-width: 56.0312px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 56.0312px;">Pago (R$)</div></th>
+              <th class="money column_100" style="min-width: 82.5156px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 82.5156px;">Recebido (R$)</div></th>
+              <th style="min-width: 114.094px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 114.094px;">Pago/Recebido via</div></th>
+              {{#showBalance}}
+                {{#reportStatusOpen}}
+                  <th class="money column_100" style="min-width: 136.688px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 136.688px;">SALDO PREVISTO (R$)</div></th>
+                {{/reportStatusOpen}}
+                {{#reportStatusRealized}}
+                  <th class="money column_100" style="min-width: 136.688px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 136.688px;">SALDO REALIZADO (R$)</div></th>
+                {{/reportStatusRealized}}
+              {{/showBalance}}
+            </tr>
+          </thead>
+          <tbody>
+            {{#items}}
+              <tr>
+                <td class="line_group_featured_2" colspan="{{groupedColspan}}">{{groupedField}}</td>
+              </tr>
+              {{#groupedByDateField}}
+                <tr>
+                  <td class="line_group_featured" colspan="{{groupedColspan}}">{{#dateFormatter}}{{dateGrouped}}{{/dateFormatter}}</td>
+                </tr>
+                {{#items}}
+                  <tr class="even">
+                    <td>{{user_description}}</td>
+                    {{^groupedByEntity}}
+                      <td>{{entity.social_reason}}</td>
+                      <td>{{#entityTypeTranslate}}{{entity.type}}{{/entityTypeTranslate}}</td>
+                      <td class="nowrap">{{#cnpjFormatter}}{{entity.national_identifier}}{{/cnpjFormatter}}</td>
+                    {{/groupedByEntity}}
+                    {{^groupedByPlanAccount}}
+                      <td>{{plan_account.reference}}</td>
+                      <td>{{plan_account.name}}</td>
+                    {{/groupedByPlanAccount}}
+                    {{^groupedByCostCenter}}
+                      <td>{{cost_center.name}}</td>
+                    {{/groupedByCostCenter}}
+                    {{^groupedByCustomsClearance}}
+                      <td>{{customs_clearance.reference}}</td>
+                    {{/groupedByCustomsClearance}}
+                    <td>{{shipment.name}}</td>
+                    {{^groupedByProject}}
+                      <td>{{project.name}}</td>
+                    {{/groupedByProject}}
+                    <td>{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                    
+                    <td class="money">{{#valueFormatter}}{{amount_payable}}{{/valueFormatter}}</td>
+                    <td class="money">{{#valueFormatter}}{{amount_receivable}}{{/valueFormatter}}</td>
+                    <td class="money">{{#valueFormatter}}{{paid_payable}}{{/valueFormatter}}</td>
+                    <td class="money">{{#valueFormatter}}{{paid_receivable}}{{/valueFormatter}}</td>
+                    <td>{{bank_account.name}}</td>
+                    {{#showBalance}}
+                      {{#reportStatusOpen}}
+                        <td class="money">{{#valueFormatter}}{{sum_estimated_balance}}{{/valueFormatter}}</td>
+                      {{/reportStatusOpen}}
+                      {{#reportStatusRealized}}
+                      <td class="money">{{#valueFormatter}}{{sum_realized_balance}}{{/valueFormatter}}</td>
+                      {{/reportStatusRealized}}
+                    {{/showBalance}}
+                  </tr>
+                {{/items}}
+                <tr class="total bold">
+                  <td colspan="{{totalColspan}}">SUB-TOTAL</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalLaunchAmountPayable}}{{/valueFormatter}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalLaunchAmountReceivable}}{{/valueFormatter}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalDownNetAmountPayable}}{{/valueFormatter}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalDownNetAmountReceivable}}{{/valueFormatter}}</td>
+                  <td></td>
+                  {{#showBalance}}
+                    {{#reportStatusOpen}}
+                      <td class="money">{{#valueFormatter}}{{subTotalEstimatedBalance}}{{/valueFormatter}}</td>
+                    {{/reportStatusOpen}}
+                    {{#reportStatusRealized}}
+                      <td class="money">{{#valueFormatter}}{{subTotalRealizedBalance}}{{/valueFormatter}}</td>
+                    {{/reportStatusRealized}}
+                  {{/showBalance}}
+                </tr>
+              {{/groupedByDateField}}
+              <tr class="total bold">
+                <td colspan="{{totalColspan}}">TOTAL ({{groupedField}})</td>
+                <td class="money">{{#valueFormatter}}{{totalGroupedLaunchAmountPayable}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{totalGroupedLaunchAmountReceivable}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{totalGroupedDownNetAmountPayable}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{totalGroupedDownNetAmountReceivable}}{{/valueFormatter}}</td>
+                <td></td>
+                {{#showBalance}}
+                  {{#reportStatusOpen}}
+                    <td class="money">{{#valueFormatter}}{{totalGroupedEstimatedBalance}}{{/valueFormatter}}</td>
+                  {{/reportStatusOpen}}
+                  {{#reportStatusRealized}}
+                    <td class="money">{{#valueFormatter}}{{totalGroupedRealizedBalance}}{{/valueFormatter}}</td>
+                  {{/reportStatusRealized}}
+                {{/showBalance}}
+              </tr>
+            {{/items}}
+            <tr class="total bold">
+              <td colspan="{{totalColspan}}">TOTAL</td>
+              <td class="money">{{#valueFormatter}}{{totalLaunchAmountPayable}}{{/valueFormatter}}</td>
+              <td class="money">{{#valueFormatter}}{{totalLaunchAmountReceivable}}{{/valueFormatter}}</td>
+              <td class="money">{{#valueFormatter}}{{totalDownNetAmountPayable}}{{/valueFormatter}}</td>
+              <td class="money">{{#valueFormatter}}{{totalDownNetAmountReceivable}}{{/valueFormatter}}</td>
+              <td></td>
+              {{#showBalance}}
+                {{#reportStatusOpen}}
+                  <td class="money">{{#valueFormatter}}{{totalEstimatedBalance}}{{/valueFormatter}}</td>
+                {{/reportStatusOpen}}
+                {{#reportStatusRealized}}
+                  <td class="money">{{#valueFormatter}}{{totalRealizedBalance}}{{/valueFormatter}}</td>
+                {{/reportStatusRealized}}
+              {{/showBalance}}
+            </tr>
+            {{#showBalance}}
+              <tr>
+                <td class="bold" style="text-align:right" colspan="{{balanceColspan}}">Saldo final (R$)</td>
+                {{#reportStatusOpen}}
+                  <td class="money bold">{{#valueFormatter}}{{totalEstimatedBalance}}{{/valueFormatter}}</td>
+                {{/reportStatusOpen}}
+                {{#reportStatusRealized}}
+                  <td class="money bold">{{#valueFormatter}}{{totalRealizedBalance}}{{/valueFormatter}}</td>
+                {{/reportStatusRealized}}
+              </tr>
+            {{/showBalance}}
+          </tbody>
+        </table>
+      {{/financialLaunchIndex}}
+      {{^financialLaunchIndex}}
+      <table>
+        <thead class="frozen">
+          <tr class="tr_frozen tr_frozen_0">
+            <th style="min-width: 1297.39px;"><div class="th_frozen th_frozen_rowspan_null" style="width: 1297.39px;"></div></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Houve um problema ao buscar os dados</td>
+            </tr>
+          </tbody>
+      </table>
+      {{/financialLaunchIndex}}
+    </div>
+
+    <div class="footer">
+      <table>
+        <tbody>
+          <tr>
+            <td width="79"><img alt="Gett Pro" src="https://sandbox.worksmarter.com.br/logo-gett.svg"></td>
+            <td>Gerado em <strong id="datetime">{{#getFullDate}}{{/getFullDate}}</strong> por <strong>{{tokenData.name}} {{tokenData.surname}}</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+	</body>
+</html>
