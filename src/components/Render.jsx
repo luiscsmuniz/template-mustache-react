@@ -10,9 +10,13 @@ const authorization = '' // jwt token
 
 const endpoint = '' // adicionar endpoint
 const templateId = 185 // resumido(synthetic): 185, detalhado(analytics): 98
+
+// ATUALIZAR OS ARQUIVOS COM BASE NA VERSÃO ATUAL DO SISTEMA. CUIDADO PARA NÃO SOBRESCREVER!
 const htmlEndpoint = 'cash-flow/synthetic.html'
 const helperEndpoint = 'cash-flow/synthetic.js'
 const optionsEndpoint = 'cash-flow/synthetic.json'
+
+// variavéis do elasticsearch
 
 const variables = {
   query: JSON.stringify({
@@ -78,6 +82,8 @@ const variables = {
   }),
 }
 
+// permissões de relatórios
+
 const reportPermissions = [
   'report_53_dynamic_report',
   'report_54_dynamic_report',
@@ -92,6 +98,7 @@ export const Render = () => {
   const [templateData, setData] = useState(null)
   const [htmlCodeInput, setHtmlCodeInput] = useState('')
 
+  // busca os dados do template
   const getTemplate = async () => {
     const response = await fetch(endpoint, {
       method: 'POST',
@@ -124,6 +131,7 @@ export const Render = () => {
     return payload[0]
   }
 
+  // executa a query do template
   const getQuery = async (query) => {
     const response = await fetch(endpoint, {
       method: 'POST',
@@ -159,6 +167,7 @@ export const Render = () => {
     setData(getHelperData)
   }
 
+  // fetch do html na pasta public/template
   const htmlCode = async () => {
     const response = await fetch(`http://localhost:3000/templates/${htmlEndpoint}`)
 
@@ -167,6 +176,7 @@ export const Render = () => {
     setHtmlCodeInput(data)
   }
 
+  // fetch do helper na pasta public/template
   const helperCode = async () => {
     const response = await fetch(`http://localhost:3000/templates/${helperEndpoint}`)
 
@@ -175,6 +185,7 @@ export const Render = () => {
     return data
   }
 
+  // fetch do options na pasta public/template
   const optionsCode = async () => {
     const response = await fetch(`http://localhost:3000/templates/${optionsEndpoint}`)
 
