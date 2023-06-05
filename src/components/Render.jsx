@@ -39,7 +39,7 @@ const variables = {
       {
         range: {
           due_date: {
-            gte: "2023-01-01",
+            gte: "2023-04-01",
             lte: "2023-04-30",
           }
         }
@@ -66,7 +66,7 @@ const variables = {
       //           }
       //         ]
       //       }
-      //     }
+      //     },
       //   }
       // }
     ],
@@ -77,6 +77,16 @@ const variables = {
     }],
   }),
 }
+
+const reportPermissions = [
+  'report_53_dynamic_report',
+  'report_54_dynamic_report',
+  'report_64_dynamic_report',
+  'report_65_dynamic_report',
+  'report_95_dynamic_report',
+  'report_98_dynamic_report',
+  'report_185_dynamic_report',
+] // inserir permissões em array ex: ['report_65_dynamic_report']
 
 export const Render = () => {
   const [templateData, setData] = useState(null)
@@ -133,7 +143,18 @@ export const Render = () => {
     const executeHelper = eval(await helperCode())
     const options = JSON.parse(await optionsCode())
 
-    const getHelperData = await executeHelper({ data, authorization, endpoint: endpoint, options })
+    const getHelperData = await executeHelper({
+      data,
+      authorization,
+      endpoint: endpoint,
+      options: {
+        ...options,
+        reportPermissions: reportPermissions
+          .map(item => item.replace('_dynamic_report', '')
+            .split('_')[1]).sort(),
+        filterFields: { ...JSON.parse(variables.query) },
+      },
+    })
 
     setData(getHelperData)
   }
