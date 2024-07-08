@@ -1,0 +1,80 @@
+{
+  "query": {
+    "must": [
+        {
+            "range": {
+                "due_date": {
+                    "gte": "2024-01-01",
+                    "lte": "2024-03-31"
+                }
+            }
+        },
+        {
+            "bool": {
+                "should": [
+                    {
+                        "match": {
+                            "status": "partially_paid"
+                        }
+                    },
+                    {
+                        "match": {
+                            "status": "paid"
+                        }
+                    },
+                    {
+                        "match": {
+                            "status": "conciliated"
+                        }
+                    },
+                    {
+                        "match": {
+                            "status": "open"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "bool": {
+                "should": [
+                    {
+                        "match": {
+                            "launch_operation": "payable_account"
+                        }
+                    },
+                    {
+                        "match": {
+                            "launch_operation": "receivable_account"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "nested": {
+                "path": "bank_account",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "match": {
+                                    "bank_account.id": "975"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": null
+            }
+        }
+    ],
+    "must_not": [
+        {
+            "exists": {
+                "field": "deleted_at"
+            }
+        }
+    ]
+}
+}

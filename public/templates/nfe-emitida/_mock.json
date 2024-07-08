@@ -1,0 +1,1483 @@
+[
+  {
+    "id": 8250,
+    "company": {
+      "id": 8,
+      "common_id": 7,
+      "social_reason": "Geht Trade Importação e Exportação Ltda. com mais de 60 caracteres",
+      "fancy_name": "Get Trade",
+      "national_identifier": "75809863000103"
+    },
+    "origin": null,
+    "setting": {
+      "id": 638,
+      "name": "SAIDA POR CONTA  E ORDEM INTERESTADUAL"
+    },
+    "serie": {
+      "id": 140,
+      "number": 3
+    },
+    "customer": {
+      "id": 860,
+      "social_reason": "BOXER DO BRASIL REPRESENTACOES LTDA",
+      "fancy_name": "BOXER",
+      "type": "legal_entity",
+      "national_identifier": "67835736000150",
+      "final": false
+    },
+    "nature_operation": {
+      "id": 53,
+      "name": "Venda",
+      "operation": "output"
+    },
+    "customs_clearance": null,
+    "di": null,
+    "operation_type": "output",
+    "serie_number": 3,
+    "number": 2018,
+    "status": "canceled",
+    "type": null,
+    "master": false,
+    "discount_type": null,
+    "emission_finality": "normal",
+    "emission_mode": "contingency_svcan",
+    "input_output_date": "2014-10-07T00:00:00.000-03:00",
+    "purchase_order_number": "",
+    "national_payment_rule": {
+      "id": 17,
+      "name": "À prazo - 2X"
+    },
+    "charge": {
+      "number": "",
+      "origin_amount": "50.84",
+      "discount_amount": "0.0",
+      "net_amount": "50.84",
+      "setting": null,
+      "generate_charge_account": false
+    },
+    "totals": {
+      "icms": {
+        "total": "0.0",
+        "bc": "0.0",
+        "st": "0.0",
+        "bc_st": "0.0",
+        "reduction": "0.0",
+        "fcp": "0.0",
+        "interstate_target": "0.0",
+        "interstate_emitter": "0.0",
+        "difal": "0.0"
+      },
+      "ipi": {
+        "total": "0.13",
+        "devolution": "0.0"
+      },
+      "pis": {
+        "total": "0.0",
+        "service": "0.0",
+        "ret": "0.0",
+        "st": "0.0"
+      },
+      "cofins": {
+        "total": "0.0",
+        "service": "0.0",
+        "ret": "0.0",
+        "st": "0.0"
+      },
+      "fcp": {
+        "total": "0.0",
+        "fst": "0.0",
+        "st_ret": "0.0"
+      },
+      "issqn": {
+        "total": "0.0",
+        "bc": "0.0"
+      },
+      "product": "50.71",
+      "other_cost": "0.0",
+      "total": "50.84",
+      "ii": "0.0",
+      "service": "0.0",
+      "csll_ret": "0.0",
+      "irrf": {
+        "ret": "0.0",
+        "bc_ret": "0.0"
+      },
+      "inss_ret": "0.0",
+      "freight_international": "0.0",
+      "insurance_international": "0.0",
+      "discount": {
+        "calc_rule": "on_aliquot",
+        "percent": "0.0",
+        "total": "0.0"
+      },
+      "freight": {
+        "mode": "on_behalf_of_issuer",
+        "calc_rule": null,
+        "total": "0.0"
+      },
+      "insurance": {
+        "calc_rule": null,
+        "total": "0.0"
+      },
+      "commission": "0.0",
+      "tax": "0.0",
+      "change": "0.0",
+      "cide": "0.0"
+    },
+    "fiscal_message": "",
+    "payer_message": "",
+    "system_message": "",
+    "other_information": "Origem: botão duplicar",
+    "carrier": {
+      "id": null,
+      "state_id": null,
+      "plaque": "",
+      "rntc": ""
+    },
+    "state_loading": null,
+    "address_delivery": null,
+    "address_pickup": null,
+    "key": "42141075809863000103550030000020186681227818",
+    "sefaz": {
+      "authorize": {
+        "receipt": "426000000181682",
+        "protocol": "642140000011959",
+        "date": "2014-10-07T11:06:58.000-03:00",
+        "contingency_date": "2014-10-07T11:08:46.000-03:00"
+      },
+      "cancel": {
+        "protocol": "",
+        "date": "2014-10-07T11:07:45.000-03:00",
+        "message": "Erro nos valores informados"
+      },
+      "cce": {
+        "sequence": 1,
+        "date": null,
+        "message": ""
+      },
+      "digest_value": "eeQqyFxh1uC8xY7DKL3kpuVLvQ8=",
+      "print_danfe_type": "portrait"
+    },
+    "sale_price_table": null,
+    "output_operation_type": "wholesale",
+    "calc_memory": "NF Saída (Totalizador) - TOTAL Produto = $NF_PRODUTO_VL_TOT_ITEM = 50.71 = 50.71;NF Saída (Totalizador) - TOTAL IPI = $NF_PRODUTO_VL_IPI = 0.13 = 0.13;NF Saída (Totalizador) - TOTAL PIS = $NF_PRODUTO_VL_PIS = 0.0 = 0.0;NF Saída (Totalizador) - TOTAL PIS ST = $NF_PRODUTO_VL_PIS_ST = 0.0 = 0.0;NF Saída (Totalizador) - TOTAL COFINS = $NF_PRODUTO_VL_COFINS = 0.0 = 0.0;NF Saída (Totalizador) - TOTAL COFINS ST = $NF_PRODUTO_VL_COFINS_ST = 0.0 = 0.0;NF Entrada (Totalizador) - BC ISSQN = $NF_SERVICO_BC_ISSQN = 0 = 0;NF Saída (Totalizador) - BC ICMS = $NF_PRODUTO_BC_ICMS = 0.0 = 0.0;NF Saída (Totalizador) - TOTAL ICMS = $NF_PRODUTO_VL_ICMS = 0.0 = 0.0;NF Saída (Totalizador) - BC ICMS ST = $NF_PRODUTO_BC_ICMS_ST = 0.0 = 0.0;NF Saída (Totalizador) - TOTAL ICMS ST = $NF_PRODUTO_VL_ICMS_ST = 0.0 = 0.0;NF Saída (Totalizador) - TOTAL outras despesas = $NF_VL_DESPESAS_OUTRAS = 0 = 0;NF Saída - TOTAL = ($NF_VL_PRODUTO + $NF_VL_IPI + $NF_PRODUTO_VL_FRETE + $NF_PRODUTO_VL_SEGURO + $NF_PRODUTO_VL_DESP_ADUANEIRA + $NF_VL_ICMS_ST + $NF_SERVICO_VL_TOT_ITEM) - ($NF_PRODUTO_VL_DESCONTO_INCONDICIONAL + $NF_PRODUTO_VL_DESCONTO_CONDICIONAL) = (50.71 + 0.13 + 0.0 + 0.0 + 0.0 + 0.0 + 0.0) - (0 + 0) = 50.84;NF Saída - Fatura (Valor original) (Gett) = $NF_VL_TOTAL = 50.84 = 50.84;NF Saída - Fatura (Desconto) (Gett) = $NF_VL_DESCONTO = 0.0 = 0.0;NF Saída - Fatura (Total) (Gett) = $NF_VL_TOTAL - $NF_VL_DESCONTO = 50.84 - 0.0 = 50.84;",
+    "deleted_at": null,
+    "created_at": "2014-10-07T11:06:22.000-03:00",
+    "updated_at": "2014-10-07T11:08:46.000-03:00",
+    "output_price_type": "average_cost_on_margin",
+    "margin_calc_type": "inside",
+    "sale_order": null,
+    "calc_memory_origin": "",
+    "commission_percent": "0.0",
+    "discriminate_tax_amount": false,
+    "emission_date": "2014-10-07T00:00:00.000-03:00",
+    "allow_edit_totalizers": false,
+    "third_party_delivery": null,
+    "third_party_withdrawal": null,
+    "redispatch": null,
+    "margin": {
+      "type": null,
+      "percent": "0.0",
+      "amount": "0.0"
+    },
+    "launch_master_expenses_on_financial": false,
+    "origin_description": null,
+    "distribution_type": "none",
+    "discount_at": "nfe",
+    "model": "55",
+    "local_destination_operation": null,
+    "version": "2.00",
+    "purchaser_type": null,
+    "loading_place": null,
+    "customs_enclosure": null,
+    "service_date": null,
+    "transport_mode": null,
+    "buyer_orderer": null,
+    "import_mode": "own_account",
+    "drawback_number": null,
+    "export_number": null,
+    "bank_account": null,
+    "has_product_fake": false,
+    "wagon": null,
+    "ferry": null,
+    "shipment": null,
+    "anp": {
+      "operation_code": null,
+      "transport_modality_code": null
+    },
+    "customer_address": {
+      "id": 510,
+      "type": "main",
+      "country": {
+        "id": 30,
+        "bacen_code": 1058,
+        "name": "BRASIL "
+      },
+      "state": {
+        "id": 35,
+        "acronym": "SP",
+        "name": "São Paulo"
+      },
+      "city": {
+        "id": 4068,
+        "ibge_code": 3550308,
+        "name": "São Paulo"
+      },
+      "zip_code": "03169010",
+      "street": "Avenida Cassandoca",
+      "number": "881",
+      "complement": "",
+      "neighborhood": "Mooca"
+    },
+    "indicator": null,
+    "intermediary": null,
+    "name_profile_seller": null,
+    "volumes": [
+      {
+        "number": "",
+        "quantity": 1176,
+        "gross_weight": "16487.6",
+        "net_weight": "13133.0",
+        "specie": "OUTROS",
+        "brand": "",
+        "cubing": "0.0",
+        "created_at": "2014-10-07T11:06:22.000-03:00",
+        "updated_at": "2014-10-07T11:06:22.000-03:00",
+        "seals": []
+      }
+    ],
+    "duplicates": [
+      {
+        "id": 3398,
+        "number": "1",
+        "amount": "25.42",
+        "due_date": "2014-10-07",
+        "payment": {
+          "description": null,
+          "amount": "50.84",
+          "national_payment_rule": {
+            "id": 17,
+            "name": "À prazo - 2X"
+          },
+          "payment_card": null
+        },
+        "commission_amount": null
+      },
+      {
+        "id": 3399,
+        "number": "2",
+        "amount": "25.42",
+        "due_date": "2014-11-06",
+        "payment": {
+          "description": null,
+          "amount": "50.84",
+          "national_payment_rule": {
+            "id": 17,
+            "name": "À prazo - 2X"
+          },
+          "payment_card": null
+        },
+        "commission_amount": null
+      }
+    ],
+    "involved": [],
+    "origins": [],
+    "documents": [],
+    "trailers": [],
+    "products": [
+      {
+        "id": 235842,
+        "product": {
+          "id": 62356,
+          "reference": "",
+          "description": "360 CAIXAS CONTENDO CERVEJA MALTE, MARCA WEXFORD IRISH ALE CAN US DEPOSIT - TEOR ALCOOLICO 5,0% ACONDICIONADAS EM 24 LATAS DE 440ML."
+        },
+        "variant": {
+          "id": 119590,
+          "reference": "01",
+          "description": "Única",
+          "nve": null
+        },
+        "ncm": {
+          "id": 1171,
+          "code": "22030000",
+          "ex_tariff": null
+        },
+        "cfop": {
+          "id": 511,
+          "code": "6.949"
+        },
+        "nfe_product_origin_id": null,
+        "measurement_unit_tax": {
+          "id": 118,
+          "name": "Caixa",
+          "acronym": "CX"
+        },
+        "measurement_unit_sale": {
+          "id": 118,
+          "name": "Caixa",
+          "acronym": "CX"
+        },
+        "unit_price": "50.7066388889",
+        "user_unit_price": "50.7066388889",
+        "quantity_tax": "1.0",
+        "quantity_sale": "1.0",
+        "total": "50.71",
+        "purchase_order": "",
+        "purchase_order_item": null,
+        "manufacturer": null,
+        "csts": {
+          "ipi": {
+            "id": 39,
+            "code": "50"
+          },
+          "pis": {
+            "id": 16,
+            "code": "08"
+          },
+          "cofins": {
+            "id": 16,
+            "code": "08"
+          },
+          "icms": {
+            "id": 3,
+            "code": "00"
+          }
+        },
+        "totals": {
+          "ii": {
+            "percent": null,
+            "bc": null,
+            "cost_customs": null,
+            "iof": null,
+            "total": "0.0"
+          },
+          "ipi": {
+            "seal": "",
+            "quantity_seal": null,
+            "calc_rule": "on_aliquot",
+            "percent": "0.25",
+            "amount": "0.0",
+            "total": "0.13",
+            "bc": "50.71",
+            "bc_autocorrect": null,
+            "devolution": "0.0"
+          },
+          "pis": {
+            "calc_rule": "on_aliquot",
+            "percent": "0.0",
+            "amount": "0.0",
+            "total": "0.0",
+            "red_bc_percent": "0.0",
+            "red_bc": "0.0",
+            "bc": "0.0",
+            "bc_st": "0.0",
+            "st_percent": "0.0",
+            "st_amount": "0.0",
+            "st": "0.0",
+            "bc_autocorrect": null
+          },
+          "cofins": {
+            "calc_rule": "on_aliquot",
+            "percent": "0.0",
+            "amount": "0.0",
+            "total": "0.0",
+            "red_bc_percent": "0.0",
+            "red_bc": "0.0",
+            "bc": "0.0",
+            "bc_st": "0.0",
+            "st_percent": "0.0",
+            "st_amount": "0.0",
+            "st": "0.0",
+            "bc_autocorrect": null,
+            "differentiated_percent": null
+          },
+          "icms": {
+            "origin": "foreign_1",
+            "percent": "0.0",
+            "red_bc_percent": "0.0",
+            "red_bc": "0.0",
+            "total": "0.0",
+            "bc_mode": "operation_value",
+            "bc": "0.0",
+            "credit_percent": "0.0",
+            "credit": "0.0",
+            "bc_operation_percent": "0.0",
+            "bc_st_mode": null,
+            "red_bc_st_percent": "0.0",
+            "st_mva_percent": "0.0",
+            "st_percent": "0.0",
+            "bc_st_percent": "0.0",
+            "bc_st": "0.0",
+            "red_st_percent": "0.0",
+            "st": "0.0",
+            "st_debit_state": null,
+            "bc_st_ret_before": "0.0",
+            "st_ret_before": "0.0",
+            "bc_st_ret_state_customer": "0.0",
+            "st_ret_state_customer": "0.0",
+            "bc_st_state_customer": "0.0",
+            "st_state_customer": "0.0",
+            "deferred_percent": "0.0",
+            "deferred": "0.0",
+            "operation": "0.0",
+            "reduction": null,
+            "reduction_reason": null,
+            "detach_icms_into_product": true,
+            "fcp_percent": "0.0",
+            "internal_percent": "0.0",
+            "interstate_percent": "0.0",
+            "interstate_partition_percent": "0.0",
+            "bc_target_state": "0.0",
+            "fcp": "0.0",
+            "interstate_target": "0.0",
+            "interstate_emitter": "0.0",
+            "bc_interstate": "0.0",
+            "without_fcp_percent": "0.0",
+            "without_fcp": "0.0",
+            "difal": "0.0",
+            "origin_total": "0.0",
+            "red_bc_st": "0.0",
+            "bc_differentiated_percent": "0.0",
+            "tabulated": "0.0",
+            "st_tabulated": "0.0",
+            "st_fcv_percent": "0.0",
+            "detach_icms_st": true,
+            "adjust_icms_st_mva": false,
+            "st_mva_percent_adjusted": "0.0",
+            "substitute": "0.0"
+          },
+          "fcp": {
+            "bc": "0.0",
+            "percent": "0.0",
+            "total": "0.0",
+            "st_bc": "0.0",
+            "st_percent": "0.0",
+            "st": "0.0",
+            "st_ret_bc": "0.0",
+            "st_ret_percent": "0.0",
+            "st_ret": "0.0"
+          },
+          "freight_international": null,
+          "insurance_international": null,
+          "thc": null,
+          "siscomex": null,
+          "afrmm": null,
+          "anti_dumping": null,
+          "fine": null,
+          "commission_percent": "0.0",
+          "commission": null,
+          "tax": null,
+          "other_costs": "0.0",
+          "apportionment_customs": "0.0",
+          "deduction": "0.0",
+          "cif": "0.0",
+          "freight": "0.0",
+          "insurance": "0.0",
+          "discount": "0.0"
+        },
+        "armament": null,
+        "medicine": null,
+        "vehicle": null,
+        "di": {
+          "id": null,
+          "number": null,
+          "registry_date": null,
+          "customs_warehouse": null,
+          "state_customs_clearance": null,
+          "customs_date": null,
+          "addition": {
+            "id": null,
+            "number": null,
+            "discount_amount": null,
+            "item_number": null
+          }
+        },
+        "calc_memory": "NF Saída - TOTAL Produto = ($NF_PRODUTO_QT_CONVERTIDA * $NF_PRODUTO_VL_UNITARIO) + $NF_PRODUTO_VL_DESPESAS_VL_PRODUTO = (1.0 * 50.7066388889) + 0.0 = 50.7066388889;NF Saída (Totalizador) - TOTAL outras despesas = $NF_VL_DESPESAS_OUTRAS = 0.0 = 0.0;NF Saída - BC IPI (Aliquota) = $NF_PRODUTO_VL_TOT_ITEM - $NF_PRODUTO_VL_DESCONTO_INCONDICIONAL = 50.71 - 0 = 50.71;NF Saída - TOTAL IPI (Aliquota) = $NF_PRODUTO_BC_IPI * ($NF_PRODUTO_PR_IPI / 100) = 50.71 * (0.25 / 100) = 0.126775;NF Saída - BC ICMS (NF Normal) = O resultado para este cálculo é zero, pois a alíquota base também é zero (icms_percent);NF Saída - TOTAL ICMS = O resultado para este cálculo é zero, pois a alíquota base também é zero (icms_percent);Estoque = Total Movimento: $ESTOQUE_VL_COST_UNIT = 0.0 = 0.0Estoque = Total Movimento: $ESTOQUE_VL_COST_UNIT = 0.0 = 0.0",
+        "created_at": "2014-10-07T11: 06: 22.000-03: 00",
+        "updated_at": "2014-10-07T11:06:57.000-03:00",
+        "calc_memory_origin": "",
+        "sale_order_product_id": null,
+        "net_weight": "0.0",
+        "gross_weight": "0.0",
+        "cubing": "0.0",
+        "detailed_stock": false,
+        "sequence": 1,
+        "apply_mva_reduction": "on_same_state",
+        "transport_mode": null,
+        "buyer_orderer": null,
+        "import_mode": null,
+        "devolution_reason": null,
+        "devolution_percent": "0.0",
+        "cest_code": null,
+        "tax_framing_id": 126,
+        "shipment_product_id": null,
+        "importation_drawback_number": null,
+        "unit_price_tax": "50.7066388889",
+        "fci_number": null
+      }
+    ]
+  }, {
+    "id": 15111,
+    "company": {
+      "id": 8,
+      "common_id": 7,
+      "social_reason": "Geht Trade Importação e Exportação Ltda. com mais de 60 caracteres",
+      "fancy_name": "Get Trade",
+      "national_identifier": "75809863000103"
+    },
+    "origin": null,
+    "setting": {
+      "id": 802,
+      "name": "Saída"
+    },
+    "serie": {
+      "id": 140,
+      "number": 3
+    },
+    "customer": {
+      "id": 6910,
+      "social_reason": "IZDA EQUIPAMENTOS PARA AUTOMATIZACAO INDUSTRIAL LTDA",
+      "fancy_name": "IZDA EQUIPAMENTOS PARA AUTOMATIZACAO INDUSTRIAL LTDA",
+      "type": "legal_entity",
+      "national_identifier": "83952358000141",
+      "final": false
+    },
+    "nature_operation": {
+      "id": 53,
+      "name": "Venda",
+      "operation": "output"
+    },
+    "customs_clearance": null,
+    "di": null,
+    "operation_type": "output",
+    "serie_number": 3,
+    "number": 2286,
+    "status": "denied",
+    "type": null,
+    "master": false,
+    "discount_type": "unconditional",
+    "emission_finality": "normal",
+    "emission_mode": "normal",
+    "input_output_date": "2015-06-11T17:14:54.000-03:00",
+    "purchase_order_number": "",
+    "national_payment_rule": {
+      "id": 16,
+      "name": "À vista"
+    },
+    "charge": {
+      "number": "",
+      "origin_amount": "10.0",
+      "discount_amount": "0.0",
+      "net_amount": "10.0",
+      "setting": null,
+      "generate_charge_account": false
+    },
+    "totals": {
+      "icms": {
+        "total": "0.0",
+        "bc": "0.0",
+        "st": "0.0",
+        "bc_st": "0.0",
+        "reduction": "0.0",
+        "fcp": "0.0",
+        "interstate_target": "0.0",
+        "interstate_emitter": "0.0",
+        "difal": "0.0"
+      },
+      "ipi": {
+        "total": "0.0",
+        "devolution": "0.0"
+      },
+      "pis": {
+        "total": "0.0",
+        "service": "0.0",
+        "ret": "0.0",
+        "st": "0.0"
+      },
+      "cofins": {
+        "total": "0.0",
+        "service": "0.0",
+        "ret": "0.0",
+        "st": "0.0"
+      },
+      "fcp": {
+        "total": "0.0",
+        "fst": "0.0",
+        "st_ret": "0.0"
+      },
+      "issqn": {
+        "total": "0.0",
+        "bc": "0.0"
+      },
+      "product": "10.0",
+      "other_cost": "0.0",
+      "total": "10.0",
+      "ii": "0.0",
+      "service": "0.0",
+      "csll_ret": "0.0",
+      "irrf": {
+        "ret": "0.0",
+        "bc_ret": "0.0"
+      },
+      "inss_ret": "0.0",
+      "freight_international": "0.0",
+      "insurance_international": "0.0",
+      "discount": {
+        "calc_rule": "on_aliquot",
+        "percent": "0.0",
+        "total": "0.0"
+      },
+      "freight": {
+        "mode": "on_behalf_of_issuer",
+        "calc_rule": null,
+        "total": "0.0"
+      },
+      "insurance": {
+        "calc_rule": null,
+        "total": "0.0"
+      },
+      "commission": "0.0",
+      "tax": "0.0",
+      "change": "0.0",
+      "cide": "0.0"
+    },
+    "fiscal_message": "",
+    "payer_message": "",
+    "system_message": "",
+    "other_information": "",
+    "carrier": {
+      "id": null,
+      "state_id": null,
+      "plaque": "",
+      "rntc": ""
+    },
+    "state_loading": null,
+    "address_delivery": null,
+    "address_pickup": null,
+    "key": "42150675809863000103550030000022861508711712",
+    "sefaz": {
+      "authorize": {
+        "receipt": "423002155461774",
+        "protocol": "342150000489537",
+        "date": "2015-06-11T17:08:57.000-03:00",
+        "contingency_date": null
+      },
+      "cancel": {
+        "protocol": "",
+        "date": null,
+        "message": ""
+      },
+      "cce": {
+        "sequence": 1,
+        "date": null,
+        "message": ""
+      },
+      "digest_value": "rSTOfjZ1jkQVll3LaNnuZo9jWMY=",
+      "print_danfe_type": "portrait"
+    },
+    "sale_price_table": {
+      "id": 141,
+      "name": "lolcode"
+    },
+    "output_operation_type": "wholesale",
+    "calc_memory": "NF Saída (Totalizador) - TOTAL Produto = $NF_PRODUTO_VL_TOT_ITEM = 10.0 = 10.0;NF Saída (Totalizador) - TOTAL IPI = $NF_PRODUTO_VL_IPI = 0.0 = 0.0;NF Saída (Totalizador) - TOTAL PIS = $NF_PRODUTO_VL_PIS = 0.0 = 0.0;NF Saída (Totalizador) - TOTAL PIS ST = $NF_PRODUTO_VL_PIS_ST = 0.0 = 0.0;NF Saída (Totalizador) - TOTAL COFINS = $NF_PRODUTO_VL_COFINS = 0.0 = 0.0;NF Saída (Totalizador) - TOTAL COFINS ST = $NF_PRODUTO_VL_COFINS_ST = 0.0 = 0.0;NF Entrada (Totalizador) - BC ISSQN = $NF_SERVICO_BC_ISSQN = 0 = 0;NF Saída (Totalizador) - BC ICMS = $NF_PRODUTO_BC_ICMS = 0 = 0;NF Saída (Totalizador) - TOTAL ICMS = $NF_PRODUTO_VL_ICMS = 0.0 = 0.0;NF Saída (Totalizador) - BC ICMS ST = $NF_PRODUTO_BC_ICMS_ST = 0.0 = 0.0;NF Saída (Totalizador) - TOTAL ICMS ST = $NF_PRODUTO_VL_ICMS_ST = 0.0 = 0.0;NF Saída (Totalizador) - TOTAL outras despesas = $NF_VL_DESPESAS_OUTRAS = 0 = 0;NF Saída (Totalizador) - TOTAL ICMS Desonerado = $NF_PRODUTO_VL_ICMS_DESONERADO = 0 = 0;NF Saída - TOTAL = ($NF_VL_PRODUTO + $NF_VL_IPI + $NF_PRODUTO_VL_FRETE + $NF_PRODUTO_VL_SEGURO + $NF_PRODUTO_VL_DESP_ADUANEIRA + $NF_VL_ICMS_ST + $NF_SERVICO_VL_TOT_ITEM) - ($NF_PRODUTO_VL_DESCONTO_INCONDICIONAL + $NF_PRODUTO_VL_DESCONTO_CONDICIONAL) - $NF_PRODUTO_VL_ICMS_DESONERADO = (10.0 + 0.0 + 0.0 + 0.0 + 0.0 + 0.0 + 0.0) - (0.0 + 0) - 0 = 10.0;NF Saída - Total dos tributos = $NF_VL_IPI + $NF_VL_PIS + $NF_VL_COFINS + $NF_VL_ICMS + $NF_VL_ICMS_ST + $NF_ENTRADA_VL_II = 0.0 + 0.0 + 0.0 + 0.0 + 0.0 + 0 = 0.0;NF Saída - Fatura (Valor original) (Gett) = $NF_VL_TOTAL = 10.0 = 10.0;NF Saída - Fatura (Desconto) (Gett) = $NF_VL_DESCONTO = 0.0 = 0.0;NF Saída - Fatura (Total) (Gett) = $NF_VL_TOTAL - $NF_VL_DESCONTO = 10.0 - 0.0 = 10.0;",
+    "deleted_at": null,
+    "created_at": "2015-06-11T17:07:38.000-03:00",
+    "updated_at": "2015-06-11T17:09:03.000-03:00",
+    "output_price_type": "price",
+    "margin_calc_type": "inside",
+    "sale_order": {
+      "id": 1174,
+      "number": 26,
+      "user_number": "26"
+    },
+    "calc_memory_origin": "",
+    "commission_percent": "0.0",
+    "discriminate_tax_amount": false,
+    "emission_date": "2015-06-11T17:08:55.000-03:00",
+    "allow_edit_totalizers": false,
+    "third_party_delivery": null,
+    "third_party_withdrawal": null,
+    "redispatch": null,
+    "margin": {
+      "type": null,
+      "percent": "0.0",
+      "amount": "0.0"
+    },
+    "launch_master_expenses_on_financial": false,
+    "origin_description": "Origem: Pedido de venda 26\nParâmetros de geração:\nParametrização: Saída\nCopiar informações adicionais: Não\nGerar com: Produtos selecionados\n111 - carro. Quantidade: 10,  00",
+    "distribution_type": "nfe_product",
+    "discount_at": "nfe",
+    "model": "55",
+    "local_destination_operation": "internal",
+    "version": "3.10",
+    "purchaser_type": "not_applicable",
+    "loading_place": null,
+    "customs_enclosure": null,
+    "service_date": null,
+    "transport_mode": null,
+    "buyer_orderer": null,
+    "import_mode": null,
+    "drawback_number": "",
+    "export_number": null,
+    "bank_account": null,
+    "has_product_fake": false,
+    "wagon": null,
+    "ferry": null,
+    "shipment": null,
+    "anp": {
+      "operation_code": null,
+      "transport_modality_code": null
+    },
+    "customer_address": {
+      "id": 5280,
+      "type": "main",
+      "country": {
+        "id": 30,
+        "bacen_code": 1058,
+        "name": "BRASIL "
+      },
+      "state": {
+        "id": 42,
+        "acronym": "SC",
+        "name": "Santa Catarina"
+      },
+      "city": {
+        "id": 4686,
+        "ibge_code": 4209102,
+        "name": "Joinville"
+      },
+      "zip_code": "89036400",
+      "street": "R. DR. HUMBERTO PINHEIRO VIEIRA",
+      "number": "100",
+      "complement": "",
+      "neighborhood": "DISTRITO INDUSTRIAL"
+    },
+    "indicator": null,
+    "intermediary": null,
+    "name_profile_seller": null,
+    "volumes": [],
+    "duplicates": [],
+    "involved": [],
+    "origins": [],
+    "documents": [],
+    "trailers": [],
+    "products": [
+      {
+        "id": 287361,
+        "product": {
+          "id": 96802,
+          "reference": "111",
+          "description": "carro"
+        },
+        "variant": {
+          "id": 163118,
+          "reference": "",
+          "description": "verde",
+          "nve": null
+        },
+        "ncm": {
+          "id": 10044,
+          "code": "00000000",
+          "ex_tariff": null
+        },
+        "cfop": {
+          "id": 244,
+          "code": "5.101"
+        },
+        "nfe_product_origin_id": null,
+        "measurement_unit_tax": {
+          "id": 102,
+          "name": "Unidade",
+          "acronym": "UN"
+        },
+        "measurement_unit_sale": {
+          "id": 102,
+          "name": "Unidade",
+          "acronym": "UN"
+        },
+        "unit_price": "1.0",
+        "user_unit_price": "1.0",
+        "quantity_tax": "10.0",
+        "quantity_sale": "10.0",
+        "total": "10.0",
+        "purchase_order": "",
+        "purchase_order_item": null,
+        "manufacturer": null,
+        "csts": {
+          "ipi": {
+            "id": 39,
+            "code": "50"
+          },
+          "pis": {
+            "id": 4,
+            "code": "01"
+          },
+          "cofins": {
+            "id": 4,
+            "code": "01"
+          },
+          "icms": {
+            "id": 33,
+            "code": "41"
+          }
+        },
+        "totals": {
+          "ii": {
+            "percent": null,
+            "bc": null,
+            "cost_customs": null,
+            "iof": null,
+            "total": "0.0"
+          },
+          "ipi": {
+            "seal": "",
+            "quantity_seal": 0,
+            "calc_rule": "on_aliquot",
+            "percent": "0.0",
+            "amount": "0.0",
+            "total": "0.0",
+            "bc": "0.0",
+            "bc_autocorrect": null,
+            "devolution": "0.0"
+          },
+          "pis": {
+            "calc_rule": "on_aliquot",
+            "percent": "0.0",
+            "amount": "0.0",
+            "total": "0.0",
+            "red_bc_percent": "0.0",
+            "red_bc": "0.0",
+            "bc": "0.0",
+            "bc_st": "0.0",
+            "st_percent": "0.0",
+            "st_amount": "0.0",
+            "st": "0.0",
+            "bc_autocorrect": null
+          },
+          "cofins": {
+            "calc_rule": "on_aliquot",
+            "percent": "0.0",
+            "amount": "0.0",
+            "total": "0.0",
+            "red_bc_percent": "0.0",
+            "red_bc": "0.0",
+            "bc": "0.0",
+            "bc_st": "0.0",
+            "st_percent": "0.0",
+            "st_amount": "0.0",
+            "st": "0.0",
+            "bc_autocorrect": null,
+            "differentiated_percent": null
+          },
+          "icms": {
+            "origin": "foreign_1",
+            "percent": "0.0",
+            "red_bc_percent": "0.0",
+            "red_bc": "0.0",
+            "total": "0.0",
+            "bc_mode": "operation_value",
+            "bc": "0.0",
+            "credit_percent": "0.0",
+            "credit": "0.0",
+            "bc_operation_percent": "0.0",
+            "bc_st_mode": "percentage_mva",
+            "red_bc_st_percent": "0.0",
+            "st_mva_percent": "0.0",
+            "st_percent": "0.0",
+            "bc_st_percent": "0.0",
+            "bc_st": "0.0",
+            "red_st_percent": "0.0",
+            "st": "0.0",
+            "st_debit_state": null,
+            "bc_st_ret_before": "0.0",
+            "st_ret_before": "0.0",
+            "bc_st_ret_state_customer": "0.0",
+            "st_ret_state_customer": "0.0",
+            "bc_st_state_customer": "0.0",
+            "st_state_customer": "0.0",
+            "deferred_percent": "0.0",
+            "deferred": "0.0",
+            "operation": "0.0",
+            "reduction": "0.0",
+            "reduction_reason": null,
+            "detach_icms_into_product": true,
+            "fcp_percent": "0.0",
+            "internal_percent": "0.0",
+            "interstate_percent": "0.0",
+            "interstate_partition_percent": "0.0",
+            "bc_target_state": "0.0",
+            "fcp": "0.0",
+            "interstate_target": "0.0",
+            "interstate_emitter": "0.0",
+            "bc_interstate": "0.0",
+            "without_fcp_percent": "0.0",
+            "without_fcp": "0.0",
+            "difal": "0.0",
+            "origin_total": "0.0",
+            "red_bc_st": "0.0",
+            "bc_differentiated_percent": "0.0",
+            "tabulated": "0.0",
+            "st_tabulated": "0.0",
+            "st_fcv_percent": "0.0",
+            "detach_icms_st": true,
+            "adjust_icms_st_mva": false,
+            "st_mva_percent_adjusted": "0.0",
+            "substitute": "0.0"
+          },
+          "fcp": {
+            "bc": "0.0",
+            "percent": "0.0",
+            "total": "0.0",
+            "st_bc": "0.0",
+            "st_percent": "0.0",
+            "st": "0.0",
+            "st_ret_bc": "0.0",
+            "st_ret_percent": "0.0",
+            "st_ret": "0.0"
+          },
+          "freight_international": null,
+          "insurance_international": null,
+          "thc": null,
+          "siscomex": null,
+          "afrmm": null,
+          "anti_dumping": null,
+          "fine": null,
+          "commission_percent": "0.0",
+          "commission": null,
+          "tax": null,
+          "other_costs": "0.0",
+          "apportionment_customs": "0.0",
+          "deduction": "0.0",
+          "cif": "0.0",
+          "freight": "0.0",
+          "insurance": "0.0",
+          "discount": "0.0"
+        },
+        "armament": null,
+        "medicine": null,
+        "vehicle": null,
+        "di": {
+          "id": null,
+          "number": null,
+          "registry_date": null,
+          "customs_warehouse": null,
+          "state_customs_clearance": null,
+          "customs_date": null,
+          "addition": {
+            "id": null,
+            "number": null,
+            "discount_amount": null,
+            "item_number": null
+          }
+        },
+        "calc_memory": "NF Saída - TOTAL Produto = ($NF_PRODUTO_QT_CONVERTIDA * $NF_PRODUTO_VL_UNITARIO) + $NF_PRODUTO_VL_DESPESAS_VL_PRODUTO = (10.0 * 1.0) + 0.0 = 10.0;NF Saída - Desconto (Aliquota) = $NF_PRODUTO_VL_TOT_ITEM * ($NF_ALIQ_DESCONTO / 100) = 10.0 * (0.0 / 100) = 0.0;NF Saída - TOTAL Produto = ($NF_PRODUTO_QT_CONVERTIDA * $NF_PRODUTO_VL_UNITARIO) + $NF_PRODUTO_VL_DESPESAS_VL_PRODUTO = (10.0 * 1.0) + 0.0 = 10.0;NF Saída (Totalizador) - TOTAL outras despesas = $NF_VL_DESPESAS_OUTRAS = 0.0 = 0.0;NF Saída - BC IPI (Aliquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (ipi_percent);NF Saída - TOTAL IPI (Aliquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (ipi_percent);NF Saída - BC PIS (Alíquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (pis_percent);NF Saída - TOTAL PIS (Alíquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (pis_percent);NF Saída - BC COFINS (Alíquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (cofins_percent);NF Saída - TOTAL COFINS (Alíquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (cofins_percent);NF Saída - BC ICMS (NF Normal) = O resultado para este cálculo é zero, pois a alíquota base também é zero (icms_percent);",
+        "created_at": "2015-06-11T17: 07: 38.000-03: 00",
+        "updated_at": "2015-06-11T17: 08: 40.000-03: 00",
+        "calc_memory_origin": "",
+        "sale_order_product_id": 2329,
+        "net_weight": "0.0",
+        "gross_weight": "0.0",
+        "cubing": "0.0",
+        "detailed_stock": true,
+        "sequence": 1,
+        "apply_mva_reduction": "on_same_state",
+        "transport_mode": null,
+        "buyer_orderer": null,
+        "import_mode": null,
+        "devolution_reason": "",
+        "devolution_percent": "0.0",
+        "cest_code": null,
+        "tax_framing_id": 126,
+        "shipment_product_id": null,
+        "importation_drawback_number": null,
+        "unit_price_tax": "1.0",
+        "fci_number": null
+      }
+    ]
+  }, {
+    "id": 8237,
+    "company": {
+      "id": 8,
+      "common_id": 7,
+      "social_reason": "Geht Trade Importação e Exportação Ltda. com mais de 60 caracteres",
+      "fancy_name": "Get Trade",
+      "national_identifier": "75809863000103"
+    },
+    "origin": null,
+    "setting": {
+      "id": 518,
+      "name": "Importação por Conta e Ordem de Terceiros"
+    },
+    "serie": {
+      "id": 140,
+      "number": 3
+    },
+    "customer": {
+      "id": 951,
+      "social_reason": "FULLER SMITH AND TURNER P.L.C",
+      "fancy_name": "",
+      "type": "exterior",
+      "national_identifier": "",
+      "final": false
+    },
+    "nature_operation": {
+      "id": 50,
+      "name": "Importação",
+      "operation": "input"
+    },
+    "customs_clearance": {
+      "id": 972,
+      "reference": "13/0209440-0 X.1"
+    },
+    "di": {
+      "id": 1848,
+      "number": "13/0209440-0"
+    },
+    "operation_type": "input",
+    "serie_number": 3,
+    "number": 2017,
+    "status": "authorized",
+    "type": null,
+    "master": false,
+    "discount_type": null,
+    "emission_finality": "normal",
+    "emission_mode": "normal",
+    "input_output_date": "2014-10-03T00:00:00.000-03:00",
+    "purchase_order_number": "",
+    "national_payment_rule": {
+      "id": 17,
+      "name": "À prazo - 2X"
+    },
+    "charge": {
+      "number": "",
+      "origin_amount": "13594.25",
+      "discount_amount": "0.0",
+      "net_amount": "13594.25",
+      "setting": null,
+      "generate_charge_account": false
+    },
+    "totals": {
+      "icms": {
+        "total": "0.0",
+        "bc": "0.0",
+        "st": "0.0",
+        "bc_st": "0.0",
+        "reduction": "0.0",
+        "fcp": "0.0",
+        "interstate_target": "0.0",
+        "interstate_emitter": "0.0",
+        "difal": "0.0"
+      },
+      "ipi": {
+        "total": "54.63",
+        "devolution": "0.0"
+      },
+      "pis": {
+        "total": "0.0",
+        "service": "0.0",
+        "ret": "0.0",
+        "st": "0.0"
+      },
+      "cofins": {
+        "total": "0.0",
+        "service": "0.0",
+        "ret": "0.0",
+        "st": "0.0"
+      },
+      "fcp": {
+        "total": "0.0",
+        "fst": "0.0",
+        "st_ret": "0.0"
+      },
+      "issqn": {
+        "total": "0.0",
+        "bc": "0.0"
+      },
+      "product": "11104.27",
+      "other_cost": "214.5",
+      "total": "13594.25",
+      "ii": "2220.85",
+      "service": "0.0",
+      "csll_ret": "0.0",
+      "irrf": {
+        "ret": "0.0",
+        "bc_ret": "0.0"
+      },
+      "inss_ret": "0.0",
+      "freight_international": "1570.9",
+      "insurance_international": "17.37",
+      "discount": {
+        "calc_rule": "on_aliquot",
+        "percent": "0.0",
+        "total": "0.0"
+      },
+      "freight": {
+        "mode": "on_behalf_of_receiver",
+        "calc_rule": null,
+        "total": "0.0"
+      },
+      "insurance": {
+        "calc_rule": null,
+        "total": "0.0"
+      },
+      "commission": "0.0",
+      "tax": "0.0",
+      "change": "0.0",
+      "cide": "0.0"
+    },
+    "fiscal_message": "",
+    "payer_message": "Importação por Conta e Ordem de Terceiros",
+    "system_message": "",
+    "other_information": "Criado a partir da DI Siscomex: 13/0209440-0\nVMLD - D.I.: R$ 17.495,89 - SMARTER: R$ 11.104,27 - Diferença: R$ 6.391,  62\nII - D.I.: R$ 6.967,  58 - SMARTER: R$ 2.220,  85 - Diferença: R$ 4.746,  73\nIPI - D.I.: R$ 4.904,  40 - SMARTER: R$ 54,  63 - Diferença: R$ 4.849,  77\nPIS - D.I.: R$ 817,  20 - SMARTER: R$ 0,  00 - Diferença: R$ 817,  20\nCOFINS - D.I.: R$ 3.891,  60 - SMARTER: R$ 0,  00 - Diferença: R$ 3.891,  60",
+    "carrier": {
+      "id": null,
+      "state_id": null,
+      "plaque": "",
+      "rntc": ""
+    },
+    "state_loading": null,
+    "address_delivery": null,
+    "address_pickup": null,
+    "key": "42141075809863000103550030000020171318030243",
+    "sefaz": {
+      "authorize": {
+        "receipt": "423002149651427",
+        "protocol": "342140000795904",
+        "date": "2014-10-03T16:17:49.000-03:00",
+        "contingency_date": null
+      },
+      "cancel": {
+        "protocol": "",
+        "date": null,
+        "message": ""
+      },
+      "cce": {
+        "sequence": 2,
+        "date": "2016-08-31T15:25:06.000-03:00",
+        "message": "Teste de carta de correcao"
+      },
+      "digest_value": "cC6jQRR65/2miA1ldm0V0Wfp5u8=",
+      "print_danfe_type": "portrait"
+    },
+    "sale_price_table": null,
+    "output_operation_type": null,
+    "calc_memory": "NF Entrada (Totalizador) - TOTAL Produto = $NF_PRODUTO_VL_TOT_ITEM = 11104.27 = 11104.27;NF Saída (Totalizador) - TOTAL II = $NF_PRODUTO_VL_II = 2220.85 = 2220.85;NF Entrada (Totalizador) - TOTAL IPI = $NF_PRODUTO_VL_IPI = 54.63 = 54.63;NF Entrada (Totalizador) - TOTAL PIS = $NF_PRODUTO_VL_PIS = 0.0 = 0.0;NF Entrada (Totalizador) - TOTAL PIS ST = $NF_PRODUTO_VL_PIS_ST = 0.0 = 0.0;NF Entrada (Totalizador) - TOTAL COFINS = $NF_PRODUTO_VL_COFINS = 0.0 = 0.0;NF Entrada (Totalizador) - TOTAL COFINS ST = $NF_PRODUTO_VL_COFINS_ST = 0.0 = 0.0;NF Entrada (Totalizador) - BC ICMS = $NF_PRODUTO_BC_ICMS = 0 = 0;NF Entrada (Totalizador) - TOTAL ICMS = $NF_PRODUTO_VL_ICMS = 0 = 0;NF Entrada (Totalizador) - BC ICMS ST = $NF_PRODUTO_BC_ICMS_ST = 0.0 = 0.0;NF Entrada (Totalizador) - TOTAL ICMS ST = $NF_PRODUTO_VL_ICMS_ST = 0.0 = 0.0;NF Entrada (Totalizador) - TOTAL outras despesas = $NF_VL_DESPESAS_OUTRAS = 214.5 = 214.5;NF Entrada - TOTAL = $NF_VL_PRODUTO + $NF_VL_II + $NF_VL_IPI + $NF_VL_PIS + $NF_VL_COFINS + $NF_PRODUTO_VL_FRETE + $NF_PRODUTO_VL_SEGURO + $NF_PRODUTO_VL_DESP_ADUANEIRA + $NF_VL_ICMS_ST + $NF_SERVICO_VL_TOT_ITEM - $NF_PRODUTO_VL_DESCONTO = 11104.27 + 2220.85 + 54.63 + 0.0 + 0.0 + 0.0 + 0.0 + 214.5 + 0.0 + 0.0 - 0.0 = 13594.25;NF Entrada - Fatura (Valor original) (Gett) = $NF_VL_TOTAL = 13594.25 = 13594.25;NF Entrada - Fatura (Desconto) (Gett) = $NF_VL_DESCONTO = 0.0 = 0.0;NF Entrada - Fatura (Total) (Gett) = $NF_VL_TOTAL - $NF_VL_DESCONTO = 13594.25 - 0.0 = 13594.25;",
+    "deleted_at": null,
+    "created_at": "2014-10-03T16:17:27.000-03:00",
+    "updated_at": "2016-08-31T15:24:18.000-03:00",
+    "output_price_type": null,
+    "margin_calc_type": null,
+    "sale_order": null,
+    "calc_memory_origin": "NF Entrada (DI) - Coeficiente de rateio do seguro (Gett) = ($DI_VL_SEGURO * $DI_VL_COTACAO) / $VL_TOT_PRODUTO = (17.37 * 1.0) / 9516.0 = 0.001825346784363177805800757;",
+    "commission_percent": "0.0",
+    "discriminate_tax_amount": false,
+    "emission_date": "2014-10-03T00:00:00.000-03:00",
+    "allow_edit_totalizers": false,
+    "third_party_delivery": null,
+    "third_party_withdrawal": null,
+    "redispatch": null,
+    "margin": {
+      "type": null,
+      "percent": "0.0",
+      "amount": "0.0"
+    },
+    "launch_master_expenses_on_financial": false,
+    "origin_description": "",
+    "distribution_type": "none",
+    "discount_at": "nfe",
+    "model": "55",
+    "local_destination_operation": null,
+    "version": "2.00",
+    "purchaser_type": null,
+    "loading_place": null,
+    "customs_enclosure": null,
+    "service_date": null,
+    "transport_mode": null,
+    "buyer_orderer": null,
+    "import_mode": "own_account",
+    "drawback_number": null,
+    "export_number": null,
+    "bank_account": null,
+    "has_product_fake": false,
+    "wagon": "",
+    "ferry": "",
+    "shipment": null,
+    "anp": {
+      "operation_code": null,
+      "transport_modality_code": null
+    },
+    "customer_address": {
+      "id": 1557,
+      "type": "main",
+      "country": {
+        "id": 177,
+        "bacen_code": 6289,
+        "name": "REINO UNIDO "
+      },
+      "state": null,
+      "city": null,
+      "zip_code": "0",
+      "street": "EXTERIOR",
+      "number": "0",
+      "complement": "",
+      "neighborhood": ""
+    },
+    "indicator": null,
+    "intermediary": null,
+    "name_profile_seller": null,
+    "volumes": [
+      {
+        "number": "",
+        "quantity": 30,
+        "gross_weight": "15720.0",
+        "net_weight": "12758.0",
+        "specie": "PALLETS",
+        "brand": "",
+        "cubing": null,
+        "created_at": "2014-10-03T16:17:27.000-03:00",
+        "updated_at": "2014-10-03T16:17:27.000-03:00",
+        "seals": []
+      }
+    ],
+    "duplicates": [],
+    "involved": [],
+    "origins": [],
+    "documents": [],
+    "trailers": [],
+    "products": [
+      {
+        "id": 235445,
+        "product": {
+          "id": 38647,
+          "reference": "",
+          "description": "CERVEJA DE MALTE, ESCURA FORTE - MARCA FULLERS LONDON PRIDE - TEOR ALCOOLICO 4,7%. ACONDICIONADA EM 240 BARRIS DE 50 LITROS."
+        },
+        "variant": {
+          "id": 74306,
+          "reference": "01",
+          "description": "Única",
+          "nve": null
+        },
+        "ncm": {
+          "id": 1171,
+          "code": "22030000",
+          "ex_tariff": null
+        },
+        "cfop": {
+          "id": 243,
+          "code": "3.949"
+        },
+        "nfe_product_origin_id": null,
+        "measurement_unit_tax": {
+          "id": 614,
+          "name": "BARRIL",
+          "acronym": "BARRI"
+        },
+        "measurement_unit_sale": {
+          "id": 614,
+          "name": "BARRIL",
+          "acronym": "BARRI"
+        },
+        "unit_price": "46.2677916667",
+        "user_unit_price": "46.2677916667",
+        "quantity_tax": "240.0",
+        "quantity_sale": "240.0",
+        "total": "11104.27",
+        "purchase_order": "",
+        "purchase_order_item": null,
+        "manufacturer": null,
+        "csts": {
+          "ipi": {
+            "id": 2,
+            "code": "00"
+          },
+          "pis": {
+            "id": 4,
+            "code": "01"
+          },
+          "cofins": {
+            "id": 4,
+            "code": "01"
+          },
+          "icms": {
+            "id": 42,
+            "code": "51"
+          }
+        },
+        "totals": {
+          "ii": {
+            "percent": "20.0",
+            "bc": "11104.27",
+            "cost_customs": null,
+            "iof": null,
+            "total": "2220.85"
+          },
+          "ipi": {
+            "seal": "",
+            "quantity_seal": null,
+            "calc_rule": "on_aliquot",
+            "percent": "0.41",
+            "amount": null,
+            "total": "54.63",
+            "bc": "13325.12",
+            "bc_autocorrect": null,
+            "devolution": "0.0"
+          },
+          "pis": {
+            "calc_rule": "on_aliquot",
+            "percent": "0.0",
+            "amount": null,
+            "total": "0.0",
+            "red_bc_percent": "0.0",
+            "red_bc": "0.0",
+            "bc": "0.0",
+            "bc_st": "0.0",
+            "st_percent": null,
+            "st_amount": null,
+            "st": "0.0",
+            "bc_autocorrect": null
+          },
+          "cofins": {
+            "calc_rule": "on_aliquot",
+            "percent": "0.0",
+            "amount": null,
+            "total": "0.0",
+            "red_bc_percent": "0.0",
+            "red_bc": "0.0",
+            "bc": "0.0",
+            "bc_st": "0.0",
+            "st_percent": null,
+            "st_amount": null,
+            "st": "0.0",
+            "bc_autocorrect": null,
+            "differentiated_percent": null
+          },
+          "icms": {
+            "origin": "foreign_1",
+            "percent": "0.0",
+            "red_bc_percent": "0.0",
+            "red_bc": "0.0",
+            "total": "0.0",
+            "bc_mode": "operation_value",
+            "bc": "0.0",
+            "credit_percent": "0.0",
+            "credit": "0.0",
+            "bc_operation_percent": null,
+            "bc_st_mode": "percentage_mva",
+            "red_bc_st_percent": "0.0",
+            "st_mva_percent": "0.0",
+            "st_percent": "0.0",
+            "bc_st_percent": "0.0",
+            "bc_st": "0.0",
+            "red_st_percent": "0.0",
+            "st": "0.0",
+            "st_debit_state": null,
+            "bc_st_ret_before": null,
+            "st_ret_before": null,
+            "bc_st_ret_state_customer": null,
+            "st_ret_state_customer": null,
+            "bc_st_state_customer": null,
+            "st_state_customer": null,
+            "deferred_percent": "0.0",
+            "deferred": "0.0",
+            "operation": "0.0",
+            "reduction": null,
+            "reduction_reason": null,
+            "detach_icms_into_product": true,
+            "fcp_percent": "0.0",
+            "internal_percent": "0.0",
+            "interstate_percent": "0.0",
+            "interstate_partition_percent": "0.0",
+            "bc_target_state": "0.0",
+            "fcp": "0.0",
+            "interstate_target": "0.0",
+            "interstate_emitter": "0.0",
+            "bc_interstate": "0.0",
+            "without_fcp_percent": "0.0",
+            "without_fcp": "0.0",
+            "difal": "0.0",
+            "origin_total": "0.0",
+            "red_bc_st": "0.0",
+            "bc_differentiated_percent": "0.0",
+            "tabulated": "0.0",
+            "st_tabulated": "0.0",
+            "st_fcv_percent": "0.0",
+            "detach_icms_st": true,
+            "adjust_icms_st_mva": false,
+            "st_mva_percent_adjusted": "0.0",
+            "substitute": "0.0"
+          },
+          "fcp": {
+            "bc": "0.0",
+            "percent": "0.0",
+            "total": "0.0",
+            "st_bc": "0.0",
+            "st_percent": "0.0",
+            "st": "0.0",
+            "st_ret_bc": "0.0",
+            "st_ret_percent": "0.0",
+            "st_ret": "0.0"
+          },
+          "freight_international": "1570.9",
+          "insurance_international": "17.37",
+          "thc": null,
+          "siscomex": null,
+          "afrmm": null,
+          "anti_dumping": null,
+          "fine": null,
+          "commission_percent": "0.0",
+          "commission": null,
+          "tax": null,
+          "other_costs": "214.5",
+          "apportionment_customs": "0.0",
+          "deduction": "0.0",
+          "cif": "0.0",
+          "freight": null,
+          "insurance": null,
+          "discount": null
+        },
+        "armament": null,
+        "medicine": null,
+        "vehicle": null,
+        "di": {
+          "id": 1848,
+          "number": null,
+          "registry_date": null,
+          "customs_warehouse": null,
+          "state_customs_clearance": null,
+          "customs_date": null,
+          "addition": {
+            "id": 18600,
+            "number": 1,
+            "discount_amount": null,
+            "item_number": 1
+          }
+        },
+        "calc_memory": "Taxa de uso do Siscomex (Gett): COEFICIENTE = $VL_DESPESA / $VL_TOTAL = 214.5 / 11104.270000008 = 0.0193168934 | VALOR = ($QT_PRODUTO * $VL_UNIT_PRODUTO) * $VL_COEFICIENTE = (240.0 * 46.2677916667) * 0.0193168934 = 214.5;NF Entrada - TOTAL Produto = ($NF_PRODUTO_QT_CONVERTIDA * $NF_PRODUTO_VL_UNITARIO) + $NF_PRODUTO_VL_DESPESAS_VL_PRODUTO = (240.0 * 46.2677916667) + 0.0 = 11104.270000008;NF Entrada (Totalizador) - TOTAL outras despesas = $NF_VL_DESPESAS_OUTRAS = 214.5 = 214.5;NF Entrada - BC II = $NF_PRODUTO_VL_TOT_ITEM = 11104.27 = 11104.27;NF Entrada - TOTAL II = $NF_PRODUTO_BC_II * ($NF_PRODUTO_PR_II / 100) = 11104.27 * (20.0 / 100) = 2220.854;NF Entrada - BC IPI (Aliquota) = $NF_PRODUTO_VL_TOT_ITEM + $NF_PRODUTO_VL_II - $NF_PRODUTO_VL_DESCONTO_INCONDICIONAL = 11104.27 + 2220.85 - 0 = 13325.12;NF Entrada - TOTAL IPI (Aliquota) = $NF_PRODUTO_BC_IPI * ($NF_PRODUTO_PR_IPI / 100) = 13325.12 * (0.41 / 100) = 54.632992;NF Entrada - BC PIS (DI - Alíquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (pis_percent);NF Entrada - TOTAL PIS (Alíquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (pis_percent);NF Entrada - BC PIS ST (Alíquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (pis_st_percent);NF Entrada - TOTAL PIS ST (Alíquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (pis_st_percent);NF Entrada - BC COFINS (DI - Alíquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (cofins_percent);NF Entrada - TOTAL COFINS (Alíquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (cofins_percent);NF Entrada - BC COFINS ST (Alíquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (cofins_st_percent);NF Entrada - TOTAL COFINS ST (Alíquota) = O resultado para este cálculo é zero, pois a alíquota base também é zero (cofins_st_percent);Estoque = Total Movimento: Estoque - Lucro Presumido (Uso) = ($VL_UNIT_ITEM * $QTD_TRIB_ITEM) + $VL_II + $VL_IPI + $VL_PIS + $VL_COFINS = (46.2677916667 * 240.0) + 2220.85 + 54.63 + 0.0 + 0.0 = 13379.750000008; | Custo unitário estoque: ($MOVIMENTO_VL_TOTAL + $ESTOQUE_VL_TOTAL) / ($ESTOQUE_QT_TOTAL + $MOVIMENTO_QT_TRIB) = (13379.750000008 + 0.0) / (0.0 + 240.0) = 55.749;",
+        "created_at": "2014-10-03T16:17:27.000-03:00",
+        "updated_at": "2016-08-31T15:24:18.000-03:00",
+        "calc_memory_origin": "NF Entrada (DI) - Frete Produto (Gett) = ($DI_ADICAO_VL_FRETE / $DI_ADICAO_VL_TOT_PRODUTO) * $VL_PRODUTO * $DI_VL_COTACAO = (1570.9 / 9516.0) * 9516.0 * 1.0 = 1570.9;NF Entrada (DI) - Seguro Produto (Gett) = $VL_COEFICIENTE_SEGURO * $VL_PRODUTO = 0.001825346784363177805800757 * 9516.0 = 17.37;NF Entrada - Total Produto (Soma frete e seguro) = ($DI_PRODUTO_VL_TOT_ITEM * $DI_TX_CAMBIO_PRODUTO) + ($NF_PRODUTO_VL_FRETE_INTERNACIONAL * $DI_TX_CAMBIO_FRETE) + ($NF_PRODUTO_VL_SEGURO_INTERNACIONAL * $DI_TX_CAMBIO_SEGURO) + $NF_VL_TOTAL_DESPESAS = (9516.0 * 1.0) + (1570.9 * 1.0) + (17.37 * 1.0) + 0.0 = 11104.27;",
+        "sale_order_product_id": null,
+        "net_weight": null,
+        "gross_weight": null,
+        "cubing": null,
+        "detailed_stock": false,
+        "sequence": 1,
+        "apply_mva_reduction": "on_same_state",
+        "transport_mode": null,
+        "buyer_orderer": null,
+        "import_mode": null,
+        "devolution_reason": "",
+        "devolution_percent": "0.0",
+        "cest_code": "",
+        "tax_framing_id": 126,
+        "shipment_product_id": null,
+        "importation_drawback_number": null,
+        "unit_price_tax": "46.2677916667",
+        "fci_number": null
+      }
+    ]
+  }
+]

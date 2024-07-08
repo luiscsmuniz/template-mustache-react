@@ -1,0 +1,264 @@
+<html dir="ltr" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml">
+  <body class="report">
+      {{#bankAccountMovementIndex}}
+        {{#payload}}
+          {{#_source}}
+            <div class="wrapper">
+              <div class="container">
+                <div class="thead_frozen" id="thead_frozen_0"></div>
+                <div class="thead_frozen" id="thead_frozen_1"></div>
+                <div id="report_async_content">
+                  <h2>Informações</h2>
+                  <table>
+                    <tr>
+                      <td class="td_label_80">Descrição:</td><td>{{description}}</td>
+                      <td class="td_label_80">Valor (R$):</td><td class='money'>{{#valueFormatter}}{{movement_amount}}{{/valueFormatter}}</td>
+                      <td class="td_label_80">Data:</td><td>{{#dateFormatter}}{{movement_date}}{{/dateFormatter}}</td>
+                    </tr>
+                    <tr>
+                      <td class="td_label_80">Operação:</td><td>{{movement_operation}}</td>
+                      <td class="td_label_80">Movimento:</td><td>{{movement_type}}</td>
+                      <td class="td_label_80">Entidade:</td><td>{{entity.social_reason}}</td>
+                    </tr>
+                    <tr>
+                      <td class="td_label_80">Parametrização:</td><td>{{financial_launch_setting_name}}</td>
+                      <td class="td_label_80">Desembaraço:</td><td>{{customs_clearance.reference}}</td>
+                      <td class="td_label_80">Embarque:</td><td>{{shipment.reference}}</td>
+                    </tr>
+                    <tr>
+                      <td class="td_label_80">Projeto:</td><td>{{project.name}}</td>
+                      <td class="td_label_80">Plano de contas:</td><td>{{#plan_account}}{{plan_account.reference}} - {{plan_account.name}}{{/plan_account}}</td>
+                      <td class="td_label_80">Centro de custo:</td><td>{{cost_center.name}}</td>
+                    </tr>
+                    <tr>
+                      <td class="td_label_80">
+                        Meio de
+                        {{#movementOperationPayable}}
+                          pagamento
+                        {{/movementOperationPayable}}
+                        {{^movementOperationPayable}}
+                          recebimento
+                        {{/movementOperationPayable}}:
+                      </td><td>{{payment_mean.name}}</td>
+                      <td class="td_label_80">Mês de competência:</td><td>{{#dateFormatter}}{{accrual_month}}{{/dateFormatter}}</td>
+                      <td class="td_label_80">Descrição no extrato:</td><td>{{extract_document_number}}</td>
+                    </tr>
+                    <tr>
+                      <td class="td_label_80">Valor no extrato (R$):</td><td class='money'>{{extract_amount}}</td>
+                      <td class="td_label_80">Data no extrato:</td><td>{{#dateFormatter}}{{extract_document_date}}{{/dateFormatter}}</td>
+                    </tr>
+                  </table>
+
+                  <h2>Conta</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Banco</th>
+                        <th>Agência</th>
+                        <th>Conta</th>
+                        <th>Descrição</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{bankAccount.bank.name}}</td>
+                        <td>
+                          {{bankAccount.agencyNumber}}
+                          {{#bankAccount.agencyDigit}}
+                            - {{bankAccount.agencyDigit}}
+                          {{/bankAccount.agencyDigit}}
+                        </td>
+                        <td>
+                          {{bankAccount.accountNumber}}
+                          {{#bankAccount.accountDigit}}
+                            - {{bankAccount.accountDigit}}
+                          {{/bankAccount.accountDigit}}
+                        </td>
+                        <td>{{bankAccount.name}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <h2>Documentos</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Tipo</th>
+                        <th>Número</th>
+                        <th>Data Emissão</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#document_type}}
+                        <tr>
+                          <td>{{#documentTypeTranslate}}{{document_type}}{{/documentTypeTranslate}}</td>
+                          <td>{{document_number}}</td>
+                          <td>{{#dateFormatter}}{{document_date}}{{/dateFormatter}}</td>
+                        </tr>
+                      {{/document_type}}
+                      {{^document_type}}
+                        <tr>
+                          <td colspan="3">{{#isEmpty}}{{/isEmpty}}</td>
+                        </tr>
+                      {{/document_type}}
+                    </tbody>
+                  </table>
+
+                  <h2>Movimentações</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Data de movimentação</th>
+                        <th>Entidade</th>
+                        <th>Desembaraço</th>
+                        <th>Embarque</th>
+                        <th>Projeto</th>
+                        <th>Plano de contas</th>
+                        <th>Centro de custo</th>
+                        <th>Valor (R$)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#installmentsArray}}
+                        <tr>
+                          <td>{{description}}</td>
+                          <td>{{#dateFormatter}}{{movement_date}}{{/dateFormatter}}</td>
+                          <td>{{entity.social_reason}}</td>
+                          <td>{{customs_clearance.reference}}</td>
+                          <td>{{shipment.reference}}</td>
+                          <td>{{project.name}}</td>
+                          <td>{{plan_account.name}}</td>
+                          <td>{{cost_center.name}}</td>
+                          <td class='money'>{{#valueFormatter}}{{amount}}{{/valueFormatter}}</td>
+                        </tr>
+                        <tr>
+                          {{#financialLaunchDown}}
+                            <!-- <%
+                              financial_launches = financial_launch_down.second
+                              financial_launch_down = financial_launch_down.first
+                            %> -->
+                            <td colspan='9'>
+                              <h3>Conciliação / Baixa Conciliada</h3>
+                              <table style="padding: 0">
+                                <thead>
+                                  <tr>
+                                    <th>Tipo de baixa</th>
+                                    <th>
+                                      Meio de
+                                      {{#movementOperationPayable}}
+                                        pagamento
+                                      {{/movementOperationPayable}}
+                                      {{^movementOperationPayable}}
+                                        recebimento
+                                      {{/movementOperationPayable}}
+                                    </th>
+                                    <th>
+                                      Data de
+                                      {{#movementOperationPayable}}
+                                        pagamento
+                                      {{/movementOperationPayable}}
+                                      {{^movementOperationPayable}}
+                                        recebimento
+                                      {{/movementOperationPayable}}
+                                    </th>
+                                    <th>Valor (R$)</th>
+                                    <th>Multa (R$)</th>
+                                    <th>Juros (R$)</th>
+                                    <th>Desconto (R$)</th>
+                                    <th>
+                                      {{#movementOperationPayable}}
+                                        Pago
+                                      {{/movementOperationPayable}}
+                                      {{^movementOperationPayable}}
+                                        Recebido
+                                      {{/movementOperationPayable}} (R$)
+                                    </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>{{financialLaunchDown.down_type}}</td>
+                                    <td>{{financialLaunchDown.payment_mean.name}}</td>
+                                    <td>{{#dateFormatter}}{{financialLaunchDown.down_date}}{{/dateFormatter}}</td>
+                                    <td class='money'>{{#valueFormatter}}{{financialLaunchDown.amount}}{{/valueFormatter}}</td>
+                                    <td class='money'>{{#valueFormatter}}{{financialLaunchDown.fine}}{{/valueFormatter}}</td>
+                                    <td class='money'>{{#valueFormatter}}{{financialLaunchDown.interest}}{{/valueFormatter}}</td>
+                                    <td class='money'>{{#valueFormatter}}{{financialLaunchDown.discount}}{{/valueFormatter}}</td>
+                                    <td class='money'>{{#valueFormatter}}{{financialLaunchDown.paid}}{{/valueFormatter}}</td>
+                                  </tr>
+                                  <tr>
+                                    <td colspan='8'>
+                                      <h3>Lançamentos</h3>
+                                      <table style="padding: 0;">
+                                        <thead>
+                                          <tr>
+                                            <th>Descrição</th>
+                                            <th>Entidade</th>
+                                            <th>Desembaraço</th>
+                                            <th>Embarque</th>
+                                            <th>Plano de contas</th>
+                                            <th>Centro de custo</th>
+                                            <th>Unidade de negócio</th>
+                                            <th>
+                                              {{#movementOperationPayable}}
+                                                Pago
+                                              {{/movementOperationPayable}}
+                                              {{^movementOperationPayable}}
+                                                Recebido
+                                              {{/movementOperationPayable}} via
+                                            </th>
+                                            <th>Vencimento</th>
+                                            <th>Valor (R$)</th>
+                                            <th>
+                                              {{#movementOperationPayable}}
+                                                Pago
+                                              {{/movementOperationPayable}}
+                                              {{^movementOperationPayable}}
+                                                Recebido
+                                              {{/movementOperationPayable}} (R$)
+                                            </th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          {{#financialLaunch}}
+                                            <tr>
+                                              <td class='reports_link'>
+                                                <a
+                                                  href="{{url}}"
+                                                  onclick="window.open(this.href,'_blank'); return false;"
+                                                >
+                                                  {{user_description}}
+                                                </a>
+                                              </td>
+                                              <td>{{entity.social_reason}}</td>
+                                              <td>{{customs_clearance_financial_launch.reference}}</td>
+                                              <td>{{shipment.reference}}</td>
+                                              <td>{{plan_account.name}}</td>
+                                              <td>{{cost_center_financial_launch.name}}</td>
+                                              <td>{{company.social_reason}}</td>
+                                              <td>{{bank_account.name}}</td>
+                                              <td>{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                                              <td class='money'>{{#valueFormatter}}{{launch_amount}}{{/valueFormatter}}</td>
+                                              <td class='money'>{{#valueFormatter}}{{down_net_amount_financial_launch}}{{/valueFormatter}}</td>
+                                            </tr>
+                                          {{/financialLaunch}}
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          {{/financialLaunchDown}}
+                        </tr>
+                      {{/installmentsArray}}
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          {{/_source}}
+        {{/payload}}
+      {{/bankAccountMovementIndex}}
+	</body>
+</html>

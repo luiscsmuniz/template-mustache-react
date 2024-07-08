@@ -1,0 +1,272 @@
+<html dir="ltr" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>Relatório - Gett Pro</title>
+    <link rel="stylesheet" media="all" href="https://sandbox.worksmarter.com.br/report.css">
+  </head>
+  <body class="report">
+      {{#chargeAccountIndex}}
+        {{#payload}}
+          {{#_source}}
+            <div class="wrapper">
+              <div class="container">
+                <div class="thead_frozen" id="thead_frozen_0"></div>
+                <div class="thead_frozen" id="thead_frozen_1"></div>
+                <div id="report_async_content">
+                  <h2>Informações</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th colspan="5">Conta</th>
+                        <th colspan="7">Cobrança</th>
+                        {{#inRemittance}}
+                          <th colspan="2">Remessa</th>
+                        {{/inRemittance}}
+                      </tr>
+                      <tr>
+                        <th>Banco</th>
+                        <th>Agência</th>
+                        <th>Conta</th>
+                        <th>Tipo de Conta</th>
+                        <th>Carteira</th>
+                        <th>Espécie</th>
+                        <th>Sequência</th>
+                        <th>Nosso número</th>
+                        <th>Nº documento</th>
+                        <th>Vencimento</th>
+                        <th>Valor (R$)</th>
+                        <th>Status</th>
+                        {{#inRemittance}}
+                          <th>Número</th>
+                          <th>Status</th>
+                        {{/inRemittance}}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <td>{{bankAccount.bank.bacenCode}} - {{bankAccount.bank.name}}</td>
+                        <td>
+                          {{bankAccount.agencyNumber}}
+                          {{#bankAccount.agencyDigit}}
+                            - {{bankAccount.agencyDigit}}
+                          {{/bankAccount.agencyDigit}}
+                        </td>
+                        <td>
+                          {{bankAccount.accountNumber}}
+                          {{#bankAccount.accountDigit}}
+                            - {{bankAccount.accountDigit}}
+                          {{/bankAccount.accountDigit}}
+                        </td>
+                        <td>{{bankAccount.accountType}}</td>
+                        <td>{{portfolio_code}}</td>
+                        <td>{{kind}}</td>
+                        <td>{{sequence}}</td>
+                        <td>{{our_number}}</td>
+                        <td>{{document_number}}</td>
+                        <td>{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                        <td class="money">{{#valueFormatter}}{{amount}}{{/valueFormatter}}</td>
+                        <td>
+                          <span class="{{#statusBadge}}{{status}}{{/statusBadge}} status_box">
+                            {{#statusTranslate}}{{status}}{{/statusTranslate}}
+                          </span>
+                        </td>
+                        {{#inRemittance}}
+                          <td>{{remittance.number}}</td>
+                          <td>{{#statusTranslate}}{{remittance.status}}{{/statusTranslate}}</td>
+                        {{/inRemittance}}
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h2>Cliente (pagador)</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Nome</th>
+                        {{#legalEntity}}
+                          <th>Nome fantasia</th>
+                        {{/legalEntity}}
+                        <th>{{entityType}}</th>
+                        <th>Contato</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <td>{{entity_drawee.social_reason}}</td>
+                        {{#legalEntity}}
+                          <td>{{entity_drawee.fancy_name}}</td>
+                        {{/legalEntity}}
+                        <td>{{#cnpjFormatter}}{{entity_drawee.national_identifier}}{{/cnpjFormatter}}</td>
+                        <td>{{entity_drawee.contact.name}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <h2>Configurações</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Juros ao dia - Alíquota</th>
+                        <th>Multa - Alíquota</th>
+                        <th>Dias protesto</th>
+                        <th>Baixa/devolução</th>
+                        <th>Aceite</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="odd">
+                        <td class="money">{{#valueFormatter}}{{interest_percent}}{{/valueFormatter}}</td>
+                        <td class="money">{{#valueFormatter}}{{fine_percent}}{{/valueFormatter}}</td>
+                        <td>{{protest_days}}</td>
+                        <td>{{write_off_type}}</td>
+                        <td>{{acceptance}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  {{#clearingInstruction}}
+                    <h2>Instruções para o caixa</h2>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Linha</th>
+                          <th>Descrição</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="odd">
+                          <td>Linha 1</td>
+                          <td>{{clearing_instruction_line_1}}</td>
+                        </tr>
+                        <tr class="even">
+                          <td>Linha 2</td>
+                          <td>{{clearing_instruction_line_2}}</td>
+                        </tr>
+                        <tr class="odd">
+                          <td>Linha 3</td>
+                          <td>{{clearing_instruction_line_3}}</td>
+                        </tr>
+                        <tr class="even">
+                          <td>Linha 4</td>
+                          <td>{{clearing_instruction_line_4}}</td>
+                        </tr>
+                        <tr class="odd">
+                          <td>Linha 5</td>
+                          <td>{{clearing_instruction_line_5}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  {{/clearingInstruction}}
+
+                  {{#draweeInstruction}}
+                    <h2>Instruções para o recibo do sacado</h2>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Linha</th>
+                          <th>Descrição</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="odd">
+                          <td>Linha 1</td>
+                          <td>{{drawee_instruction_line_1}}</td>
+                        </tr>
+                        <tr class="even">
+                          <td>Linha 2</td>
+                          <td>{{drawee_instruction_line_2}}</td>
+                        </tr>
+                        <tr class="odd">
+                          <td>Linha 3</td>
+                          <td>{{drawee_instruction_line_3}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  {{/draweeInstruction}}
+
+                  <h2>Lançamentos relacionados</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Entidade</th>
+                        <th>Vencimento</th>
+                        <th>A receber (R$)</th>
+                        <th>Recebimento</th>
+                        <th>Recebido (R$)</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#financialLaunchs}}
+                        <tr class="even">
+                          <td class='reports_link'><a href='{{url}}' onclick="window.open(this.href,'_blank'); return false;">{{user_description}}</td>
+                          <td>{{entity.social_reason}}</td>
+                          <td>{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                          <td class="money">{{#valueFormatter}}{{launch_amount}}{{/valueFormatter}}</td>
+                          <td>{{#dateFormatter}}{{down_date}}{{/dateFormatter}}</td>
+                          <td class="money">{{#valueFormatter}}{{down_net_amount}}{{/valueFormatter}}</td>
+                          <td>
+                            <span class="{{#statusBadge}}{{status}}{{/statusBadge}} status_box">
+                              {{#statusTranslate}}{{status}}{{/statusTranslate}}
+                            </span>
+                          </td>
+                        </tr>
+                      {{/financialLaunchs}}
+                    </tbody>
+                  </table>
+
+                  {{#receivedStatus}}
+                    <h2>Recebimento</h2>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Acréscimos (R$)</th>
+                          <th>Desconto (R$)</th>
+                          <th>Taxa</th>
+                          <th>Total (R$)</th>
+                          <th>Data</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="odd">
+                          <td class="money">{{#valueFormatter}}{{increase_amount}}{{/valueFormatter}}</td>
+                          <td class="money">{{#valueFormatter}}{{discount_amount}}{{/valueFormatter}}</td>
+                          <td class="money">{{#valueFormatter}}{{tax_amount}}{{/valueFormatter}}</td>
+                          <td class="money">{{#valueFormatter}}{{total_amount}}{{/valueFormatter}}</td>
+                          <td>{{#dateFormatter}}{{receivement_date}}{{/dateFormatter}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  {{/receivedStatus}}
+
+                  {{#canceledStatus}}
+                    <h2>Cancelamento</h2>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Justificativa</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="odd">
+                          <td>{{justification}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  {{/canceledStatus}}
+                </div>
+              </div>
+            </div>
+            <div class="footer">
+              <table>
+                <tbody><tr>
+                  <td width="79"><img alt="Gett Pro" src="https://sandbox.worksmarter.com.br/logo-gett.svg"></td>
+                  <td>Gerado em <strong id="datetime">{{#getFullDate}}{{/getFullDate}}</strong> por <strong>{{tokenData.name}} {{tokenData.surname}}</strong></td>
+                </tr>
+              </tbody></table>
+            </div>
+          {{/_source}}
+        {{/payload}}
+      {{/chargeAccountIndex}}
+	</body>
+</html>

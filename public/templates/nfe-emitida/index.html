@@ -1,0 +1,394 @@
+<div class="wrapper">
+{{#nfeIndex}}
+	{{#detailedItems}}
+		<div id="report_async_content">
+			{{#showInputNfes}}
+			<h2>Entradas</h2>
+			<table>
+				<thead class="frozen">
+					<tr class="tr_frozen tr_frozen_0">
+						<th>Emissão</th>
+						<th>Desembaraço</th>
+						<th>Embarque</th>
+						<th>Declaração</th>
+						<th>Número</th>
+						<th>Série</th>
+						<th>Autorização</th>
+						<th>Entrada no sistema</th>
+						<th>Tipo</th>
+						<th>Entidade</th>
+						{{#showUnitCost}}
+							{{#show_unit_cost_input}}
+								<th>Custo da entrada</th>
+							{{/show_unit_cost_input}}
+							{{^show_unit_cost_input}}
+								<th>Custo estoque</th>
+							{{/show_unit_cost_input}}
+						{{/showUnitCost}}
+						<th>Produto (R$)</th>
+						<th>Frete (R$)</th>
+						<th>Seguro (R$)</th>
+						<th>II (R$)</th>
+						<th>PIS (R$)</th>
+						<th>COFINS (R$)</th>
+						<th>B.C. IPI (R$)</th>
+						<th>IPI (R$)</th>
+						<th>B.C. ICMS (R$)</th>
+						<th>ICMS (R$)</th>
+						<th>ICMS S.T. (R$)</th>
+						<th>ICMS UF ORIGEM (R$)</th>
+						<th>ICMS UF DESTINO (R$)</th>
+						<th>FCP (R$)</th>
+						<th>Outras Desp. (R$)</th>
+						<th>Desconto (R$)</th>
+						<th>Total da N.F. (R$)</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#items}}
+					<tr class="">
+						<td>{{nfe_status_supplier}}</td>
+						<td>{{customs_clearance.reference}}</td>
+						<td>{{shipment.reference}}</td>
+						<td>{{di.number}}</td>
+						<td>{{number}}</td>
+						<td>{{serie_number}}</td>
+						<td>{{#dateFormatter}}{{emission_date}}{{/dateFormatter}}</td>
+						<td>{{#dateFormatter}}{{updated_at}}{{/dateFormatter}}</td>
+						<td>{{emission_finality}}</td>
+						<td>{{customer.social_reason}}</td>
+						{{#showUnitCost}}
+							<td class="money">{{#valueFormatter}}{{nfe_cost}}{{/valueFormatter}}</td>
+						{{/showUnitCost}}
+						<td class="money">{{#valueFormatter}}{{amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{freight_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{insurance_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{ii_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{pis_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{cofins_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{ipi_bc_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{ipi_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_bc_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_st_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_interstate_emitter_total}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_interstate_target_total}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_fcp_total}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{other_cost_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{discount_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{nfe_amount}}{{/valueFormatter}}</td>
+					</tr>
+					{{/items}}
+					{{^items}}
+					<tr>
+						<td colspan="27">{{#isEmpty}}{{/isEmpty}}</td>
+					</tr>
+					{{/items}}
+					{{#total}}
+					<tr class="total bold">
+						<td colspan="10">TOTAL</td>
+						{{#showUnitCost}}
+							<td class="money">{{#valueFormatter}}{{nfe_cost}}{{/valueFormatter}}</td>
+						{{/showUnitCost}}
+						<td class="money">{{#valueFormatter}}{{amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{freight_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{insurance_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{ii_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{pis_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{cofins_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{ipi_bc_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{ipi_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_bc_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_st_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_interstate_emitter_total}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_interstate_target_total}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_fcp_total}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{other_cost_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{discount_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{nfe_amount}}{{/valueFormatter}}</td>
+					</tr>
+					{{/total}}
+				</tbody>
+			</table>
+			{{/showInputNfes}}
+
+			{{#showOutputNfes}}
+			<h2>Saídas</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Desembaraço</th>
+						<th>Embarque</th>
+						<th>Declaração</th>
+						<th>Número</th>
+						<th>Série</th>
+						<th>Data</th>
+						<th>Tipo</th>
+						<th>Entidade</th>
+						{{#showUnitCost}}
+							{{#show_unit_cost_input}}
+								<th>Custo da entrada</th>
+							{{/show_unit_cost_input}}
+							{{^show_unit_cost_input}}
+								<th>Custo estoque</th>
+							{{/show_unit_cost_input}}
+						{{/showUnitCost}}
+						<th>Produto (R$)</th>
+						<th>Frete (R$)</th>
+						<th>Seguro (R$)</th>
+						<th>Pis (R$)</th>
+						<th>Cofins (R$)</th>
+						<th>B.C. IPI (R$)</th>
+						<th>IPI (R$)</th>
+						<th>Dif. IPI</th>
+						<th>B.C. ICMS (R$)</th>
+						<th>ICMS (R$)</th>
+						<th>ICMS S.T. (R$)</th>
+						<th>ICMS UF ORIGEM (R$)</th>
+						<th>ICMS UF DESTINO (R$)</th>
+						<th>FCP (R$)</th>
+						<th>Outras Desp. (R$)</th>
+						<th>Desconto (R$)</th>
+						<th>Total da N.F. (R$)</th>
+					</tr>
+				</thead>
+				<tbody>	
+					{{#items}}
+					<tr>
+						<td>{{customs_clearance.reference}}</td>
+						<td>{{shipment.reference}}</td>
+						<td>{{di.number}}</td>
+						<td>{{nfe_number}}</td>
+						<td>{{nfe_serie_number}}</td>
+						<td>{{#dateFormatter}}{{nfe_aut_date}}{{/dateFormatter}}</td>
+						<td>{{emission_finality}}</td>
+						<td>{{customer.social_reason}}</td>
+						{{#showUnitCost}}
+							<td class="money">{{#valueFormatter}}{{nfe_cost}}{{/valueFormatter}}</td>
+						{{/showUnitCost}}
+						<td class="money">{{#valueFormatter}}{{amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{freight_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{insurance_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{pis_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{cofins_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{ipi_bc_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{ipi_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{ipi_diff}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_bc_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_st_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_interstate_emitter_total}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_interstate_target_total}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_fcp_total}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{other_cost_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{discount_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{nfe_amount}}{{/valueFormatter}}</td>
+					</tr>
+					{{/items}}
+					{{^items}}
+					<tr>
+						<td colspan="27">{{#isEmpty}}{{/isEmpty}}</td>
+					</tr>
+					{{/items}}
+					{{#total}}
+					<tr class="total bold">
+						<td colspan="8">TOTAL</td>
+						{{#showUnitCost}}
+							<td class="money">{{#valueFormatter}}{{nfe_cost}}{{/valueFormatter}}</td>
+						{{/showUnitCost}}
+						<td class="money">{{#valueFormatter}}{{amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{freight_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{insurance_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{pis_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{cofins_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{ipi_bc_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{ipi_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{ipi_diff}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_bc_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_st_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_interstate_emitter_total}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_interstate_target_total}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{icms_fcp_total}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{other_cost_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{discount_amount}}{{/valueFormatter}}</td>
+						<td class="money">{{#valueFormatter}}{{nfe_amount}}{{/valueFormatter}}</td>
+					</tr>
+					{{/total}}
+				</tbody>
+			</table>
+			{{/showOutputNfes}}
+			
+			{{#showCanceledNfes}}
+			<h2>Canceladas</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Operação</th>
+						<th>Desembaraço</th>
+						<th>Declaração</th>
+						<th>Número</th>
+						<th>Série</th>
+						<th>Mês/Ano</th>
+						<th>Data</th>
+						<th>Tipo</th>
+						<th>Motivo</th>
+					</tr>
+				</thead>
+			
+				<tbody>
+					{{#items}}
+					<tr>
+						<td>{{operation_type}}</td>
+						<td>{{customs_clearance.reference}}</td>
+						<td>{{di.number}}</td>
+						<td>{{number}}</td>
+						<td>{{serie_number}}</td>
+						<td>{{cancel_date}}</td>
+						<td>{{#dateFormatter}}{{nfe_aut_date}}{{/dateFormatter}}</td>
+						<td>{{emission_finality}}</td>
+						<td class="description">{{description}}</td>
+					</tr>
+					{{/items}}
+					{{^items}}
+					<tr>
+						<td colspan="9">{{#isEmpty}}{{/isEmpty}}</td>
+					</tr>
+					{{/items}}
+				</tbody>
+			</table>
+			{{/showCanceledNfes}}
+			
+			{{#showDeniedNfes}}
+			<h2>Denegadas</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Operação</th>
+						<th>Desembaraço</th>
+						<th>Declaração</th>
+						<th>Número</th>
+						<th>Série</th>
+						<th>Data</th>
+						<th>Tipo</th>
+						<th>Entidade</th>
+					</tr>
+				</thead>
+			
+				<tbody>
+					{{#items}}
+					<tr>
+						<td>{{operation_type}}</td>
+						<td>{{customs_clearance.reference}}</td>
+						<td>{{di.number}}</td>
+						<td>{{number}}</td>
+						<td>{{serie_number}}</td>
+						<td>{{#dateFormatter}}{{nfe_aut_date}}{{/dateFormatter}}</td>
+						<td>{{emission_finality}}</td>
+						<td>{{customer.social_reason}}</td>
+					</tr>
+					{{/items}}
+					{{^items}}
+					<tr>
+						<td colspan="8">{{#isEmpty}}{{/isEmpty}}</td>
+					</tr>
+					{{/items}}
+				</tbody>
+			</table>
+			{{/showDeniedNfes}}
+			
+			{{#showNfeDisableRanges}}
+			<h2>Inutilizadas</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Faixa Inicial</th>
+						<th>Faixa Final</th>
+						<th>Série</th>
+						<th>Ano</th>
+						<th>Motivo</th>
+					</tr>
+				</thead>
+			
+				<tbody>
+					<tr>
+						<td>12345</td>
+						<td>12346</td>
+						<td>1</td>
+						<td>2023</td>
+						<td class="description">Teste inutilização de faixa de NF-e</td>
+					</tr>
+				</tbody>
+			</table>
+			{{/showNfeDisableRanges}}
+
+			{{#showCces}}
+			<h2>CC-e</h2>
+			<table>
+				<thead>
+					<tr>
+						<th class="column_80">Operação</th>
+						<th class="column_80">Número</th>
+						<th>Chave de Acesso</th>
+						<th>Correção</th>
+						<th class="column_80">Data da Correção</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#items}}
+					<tr>
+						<td>{{operation_type}}</td>
+						<td>{{number}}</td>
+						<td>{{key}}</td>
+						<td class="description">{{message}}</td>
+						<td>{{date}}</td>
+					</tr>
+					{{/items}}
+					{{^items}}
+					<tr>
+						<td colspan="5">{{#isEmpty}}{{/isEmpty}}</td>
+					</tr>
+					{{/items}}
+				</tbody>
+			</table>
+			{{/showCces}}
+		</div>
+	{{/detailedItems}}
+	{{^detailedItems}}
+		<div id="report_async_content"> 
+			<table>
+				<thead class="frozen fixed">
+					<tr>
+						<th>Data de autorização</th>
+						<th>Número</th>
+						<th>Entrada/Saída</th>
+						<th>CFOP</th>
+						<th>Cliente</th>
+						<th>Valor (R$)</th>
+						<th>Quantidade</th>
+					</tr>
+			</thead>
+			<tbody>
+				{{#syntheticItems}}
+				<tr>
+					<td>{{#dateFormatter}}{{emission_date}}{{/dateFormatter}}</td>
+					<td>{{number}}</td>
+					<td>{{operation_type}}</td>
+					<td>{{products_cfop.code}}</td>
+					<td>{{customer.social_reason}}</td>
+					<td class="money">{{#valueFormatter}}{{products_total_amount}}{{/valueFormatter}}</td>
+					<td class="money">{{#valueFormatter}}{{products_total_quantity}}{{/valueFormatter}}</td>
+				</tr>
+				{{/syntheticItems}}
+				{{^syntheticItems}}
+				<tr>
+					<td colspan="7">{{#isEmpty}}{{/isEmpty}}</td>
+				</tr>
+				{{/syntheticItems}}
+			</tbody>
+		</table>
+	</div>
+	{{/detailedItems}}
+{{/nfeIndex}}
+</div>

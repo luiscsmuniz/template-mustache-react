@@ -1,0 +1,40 @@
+{
+  "query": {
+    "must": [
+        {
+            "nested": {
+                "path": "project",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "exists": {
+                                    "field": "project.id"
+                                }
+                            },
+                            {
+                                "exists": {
+                                    "field": "project.id"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": null
+            }
+        }
+    ],
+    "must_not": [
+        {
+            "exists": {
+                "field": "deleted_at"
+            }
+        },
+        {
+            "exists": {
+                "field": "apportionments"
+            }
+        }
+    ]
+}
+}

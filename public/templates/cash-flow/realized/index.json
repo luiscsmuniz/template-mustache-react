@@ -1,0 +1,10 @@
+{
+  "groupedBy": "company_name",
+  "reportStatus": {
+    "value": null
+  },
+  "showBalance": true,
+  "conciliatedOnly": false,
+  "showFineInterestDiscount": true,
+  "showRetentions": true
+}

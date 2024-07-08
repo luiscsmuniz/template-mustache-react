@@ -1,0 +1,439 @@
+<html dir="ltr" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml">
+  <body class="report">
+      {{#financialLaunchIndex}}
+        {{#payload}}
+          {{#_source}}
+            <div class="wrapper">
+              <div class="container">
+                <div class="thead_frozen" id="thead_frozen_0"></div>
+                <div class="thead_frozen" id="thead_frozen_1"></div>
+                <div id="report_async_content">
+                  <h2>Informações</h2>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td class="td_label_80">Descrição:</td><td>{{user_description}}</td>
+                        <td class="td_label_80">
+                          {{#receivable_account}}
+                            A receber
+                          {{/receivable_account}}
+                          {{^receivable_account}}
+                            a pagar
+                          {{/receivable_account}} (R$):
+                        </td><td class="money">{{#valueFormatter}}{{launch_amount}}{{/valueFormatter}}</td>
+                        <td class="td_label_80">Vencimento:</td><td>{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                      </tr>
+                      <tr>
+                        <td class="td_label_80">Entidade:</td><td>{{entity.social_reason}}</td>
+                        <td class="td_label_80">Tipo:</td><td>{{#launchTypeTranslate}}{{launch_type}}{{/launchTypeTranslate}}</td>
+                        <td class="td_label_80">Parametrização:</td><td>{{financial_launch.financial_launch_setting_name}}</td>
+                      </tr>
+                      <tr>
+                        <td class="td_label_80">Desembaraço:</td><td>{{customs_clearance.reference}}</td>
+                        <td class="td_label_80">Numerário:</td><td>{{financial_launch.cash_launch_setting_name}}</td>
+                        <td class="td_label_80">Projeto:</td><td>{{project.name}}</td>
+                      </tr>
+                      <tr>
+                        <td class="td_label_80">Plano de contas:</td><td>{{plan_account.reference}} - {{plan_account.name}}</td>
+                        <td class="td_label_80">Centro de custo:</td><td>{{cost_center.name}}</td>
+                        <td class="td_label_80">Mês de competência:</td><td>{{#monthYearFormatter}}{{accrual_month}}{{/monthYearFormatter}}</td>
+                      </tr>
+                      <tr>
+                        <td class="td_label_80">NF-e:</td><td>{{document_number}}</td>
+                        <td class="td_label_80">
+                          {{#receivable_account}}
+                            receber
+                          {{/receivable_account}}
+                          {{^receivable_account}}
+                            pagar
+                          {{/receivable_account}} via:
+                        </td><td>{{bank_account.name}}</td>
+                        <td class="td_label_80">
+                          meio de {{#receivable_account}}
+                            recebimento:
+                          {{/receivable_account}}
+                          {{^receivable_account}}
+                            pagamento:
+                          {{/receivable_account}}
+                        </td><td>{{payment_mean.name}}</td>
+                      </tr>
+                      <tr>
+                        <td class="td_label_80">
+                          {{#receivable_account}}
+                            recebimento:
+                          {{/receivable_account}}
+                          {{^receivable_account}}
+                            pagamento:
+                          {{/receivable_account}}
+                        </td><td>{{#dateFormatter}}{{down_date}}{{/dateFormatter}}</td>
+                        <td class="td_label_80">
+                          {{#receivable_account}}
+                            recebido
+                          {{/receivable_account}}
+                          {{^receivable_account}}
+                            pago
+                          {{/receivable_account}} (R$):
+                        </td><td class="money">{{#valueFormatter}}{{down_net_amount}}{{/valueFormatter}}</td>
+                        <td class="td_label_80">Status:</td><td><span class="status_box {{#statusBadge}}{{status}}{{/statusBadge}}" id="status">{{#statusTranslate}}{{status}}{{/statusTranslate}}</span></td>
+                      </tr>
+                      <tr>
+                        <td class="td_label_80">Observação:</td><td colspan="5">{{observation}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  {{#parceled}}
+                    <h2>Parcelas</h2>
+                    <table>
+                      <tr>
+                        <td class="td_label_80">Parcela:</td><td>{{installment_number}}</td>
+                        <td class="td_label_80">Periodicidade:</td><td>{{periodicity_id}}</td>
+                        <td class="td_label_80">Nº total de parcelas:</td><td>{{installment_number_detail}}</td>
+                      </tr>
+                    </table>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Número</th>
+                          <th>Descrição</th>
+                          <th>Data de vencimento</th>
+                          <th>Valor (R$)</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          {{#list}}
+                            <tr>
+                              <td>{{installment_number}}</td>
+                              <td class='reports_link'><a href='{{url}}' onclick="window.open(this.href,'_blank'); return false;">{{user_description}}</td>
+                              <td>{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                              <td class='money'>{{#valueFormatter}}{{launch_amount}}{{/valueFormatter}}</td>
+                              <td><span class="status_box {{#statusBadge}}{{status}}{{/statusBadge}}" id="status">{{#statusTranslate}}{{status}}{{/statusTranslate}}</span></td>
+                            </tr>
+                          {{/list}}
+                          {{^list}}
+                            <tr>
+                              <td colspan="5">SEM REGISTROS</td>
+                            </tr>
+                          {{/list}}
+                      </tbody>
+                    </table>
+                  {{/parceled}}
+
+                  {{#recurrent}}
+                    <h2>Recorrência</h2>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Descrição</th>
+                          <th>Data de vencimento</th>
+                          <th>Valor (R$)</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#list}}
+                          <tr>
+                            <td class='reports_link'><a href='{{url}}' onclick="window.open(this.href,'_blank'); return false;">{{user_description}}</td>
+                            <td>{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                            <td class='money'>{{#valueFormatter}}{{launch_amount}}{{/valueFormatter}}</td>
+                            <td><span class="status_box {{#statusBadge}}{{status}}{{/statusBadge}}" id="status">{{#statusTranslate}}{{status}}{{/statusTranslate}}</span></td>
+                          </tr>
+                        {{/list}}
+                        {{^list}}
+                          <tr>
+                            <td colspan="4">SEM REGISTROS</td>
+                          </tr>
+                        {{/list}}
+                      </tbody>
+                    </table>
+                  {{/recurrent}}
+                  {{#apportionment}}
+                    <h2>Rateios</h2>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Descrição</th>
+                          {{#by_cost_center}}
+                            <th>Centro de custo</th>
+                            <th>Alíquota (%)</th>
+                          {{/by_cost_center}}
+                          {{^by_cost_center}}
+                            <th>Desembaraço</th>
+                            <th>Numerário</th>
+                          {{/by_cost_center}}
+                          <th>Vencimento</th>
+                          <th>Valor (R$)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{#list}}
+                          <tr>
+                            <td class="reports_link">
+                              <a
+                                href="{{url}}"
+                                onclick="window.open(this.href,'_blank'); return false;"
+                                title="{{user_description}}"
+                              >{{user_description}}</a>
+                            </td>
+                            {{#by_cost_center}}
+                              <td>{{cost_center_name}}</td>
+                              <td class='money'>{{#valueFormatter}}{{aliquot}}{{/valueFormatter}}</td>
+                            {{/by_cost_center}}
+                            {{^by_cost_center}}
+                              <td>{{customs_clearance_reference}}</td>
+                              <td>{{cash_launch_setting_name}}</td>
+                            {{/by_cost_center}}
+                            <td>{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                            <td class='money'>{{#valueFormatter}}{{launch_amount}}{{/valueFormatter}}</td>
+                          </tr>
+                        {{/list}}
+                      </tbody>
+                    </table>
+                  {{/apportionment}}
+                  <h2>Documentos</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Tipo</th>
+                        <th>Número</th>
+                        <th>Data Emissão</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#documents}}
+                        <tr>
+                          <td>{{#documentTypeTranslate}}{{document_type}}{{/documentTypeTranslate}}</td>
+                          <td>{{document_number}}</td>
+                          <td>{{#dateFormatter}}{{document_date}}{{/dateFormatter}}</td>
+                        </tr>
+                      {{/documents}}
+                      {{^documents}}
+                        <tr>
+                          <td colspan="3">SEM REGISTROS</td>
+                        </tr>
+                      {{/documents}}
+                    </tbody>
+                  </table>
+                  {{#retention}}
+                    <h2>Retenções</h2>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Imposto</th>
+                          <th>Alíquota (%)</th>
+                          <th>Total (R$)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      {{#retentions}}
+                        <tr>
+                          <td>{{tax.name}}</td>
+                          <td class='money'>{{#valueFormatter}}{{percent}}{{/valueFormatter}}</td>
+                          <td class='money'>{{#valueFormatter}}{{total}}{{/valueFormatter}}</td>
+                        </tr>
+                      {{/retentions}}
+                        <tr class='total bold'>
+                          <td class='money' colspan='2'>Total (R$)</td>
+                          <td class='money'>{{#valueFormatter}}{{retention_total_amount}}{{/valueFormatter}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  {{/retention}}
+                  {{#receivable_account}}
+                    {{#charges}}
+                      <h2>Cobranças</h2>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th rowspan="2">Cliente</th>
+                            <th rowspan="2">Conta</th>
+                            <th rowspan="2">Carteira</th>
+                            <th rowspan="2">Espécie</th>
+                            <th rowspan="2">Sequência</th>
+                            <th rowspan="2">Nosso número</th>
+                            <th rowspan="2">Valor (R$)</th>
+                            <th rowspan="2">Vencimento</th>
+                            <th rowspan="2">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {{#list}}
+                            <tr>
+                              <td>{{entity_name}}</td>
+                              <td>{{bank_account_name}}</td>
+                              <td>{{portfolio_code}}</td>
+                              <td>{{kind}}</td>
+                              <td class='reports_link'>
+                                <a href='{{url}}' onclick="window.open(this.href,'_blank'); return false;">{{sequence}}</a>
+                              </td>
+                              <td>{{our_number}}</td>
+                              <td class='money'>{{#valueFormatter}}{{amount}}{{/valueFormatter}}</td>
+                              <td>{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                              <td><span class="status_box {{#statusBadge}}{{status}}{{/statusBadge}}" id="status">{{#statusTranslate}}{{status}}{{/statusTranslate}}</span></td>
+                            </tr>
+                            {{/list}}
+                            {{^list}}
+                            <tr>
+                              <td colspan='9'>SEM REGISTROS</td>
+                            </tr>
+                          {{/list}}
+                        </tbody>
+                      </table>
+                    {{/charges}}
+                  {{/receivable_account}}
+                  <h2>
+                    {{#receivable_account}}
+                      Recebimentos
+                    {{/receivable_account}}
+                    {{^receivable_account}}
+                      Pagamentos
+                    {{/receivable_account}}
+                  </h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th rowspan="2">
+                          {{#receivable_account}}
+                            Recebimento
+                          {{/receivable_account}}
+                          {{^receivable_account}}
+                            Pagamento
+                          {{/receivable_account}}
+                          via
+                        </th>
+                        <th rowspan="2">Meio de
+                          {{#receivable_account}}
+                            recebimento
+                          {{/receivable_account}}
+                          {{^receivable_account}}
+                            pagamento
+                          {{/receivable_account}}
+                        </th>
+                        <th rowspan="2">
+                          Centro de custos
+                        </th>
+                        <th rowspan="2">Data de
+                          {{#receivable_account}}
+                            recebimento
+                          {{/receivable_account}}
+                          {{^receivable_account}}
+                            pagamento
+                          {{/receivable_account}}
+                        </th>
+                        <th colspan="3">Origem</th>
+                        <th rowspan="2">A pagar (R$)</th>
+                        <th rowspan="2">Multa (R$)</th>
+                        <th rowspan="2">Juros (R$)</th>
+                        <th rowspan="2">Desconto (R$)</th>
+                        {{#customs_clearance_id}}<th rowspan="2">Lançado no desemb.</th>{{/customs_clearance_id}}
+                        <th rowspan="2">Total (R$)</th>
+                        <th rowspan="2">Agrupado</th>
+                      </tr>
+                      <tr>
+                        <th>Documento</th>
+                        <th>Número</th>
+                        <th>Data de emissão</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#financial_downs}}
+                        <tr>
+                          <td>{{bank_account.name}}</td>
+                          <td>{{payment_mean.name}}</td>
+                          <td>{{cost_center.name}}</td>
+                          <td>{{#dateFormatter}}{{down_date}}{{/dateFormatter}}</td>
+                          <td>{{#documentTypeTranslate}}{{document_type}}{{/documentTypeTranslate}}</td>
+                          <td>{{document_number}}</td>
+                          <td>{{#dateFormatter}}{{document_date}}{{/dateFormatter}}</td>
+                          <td class='money'>{{#valueFormatter}}{{amount}}{{/valueFormatter}}</td>
+                          <td class='money'>{{#valueFormatter}}{{fine}}{{/valueFormatter}}</td>
+                          <td class='money'>{{#valueFormatter}}{{interest}}{{/valueFormatter}}</td>
+                          <td class='money'>{{#valueFormatter}}{{discount}}{{/valueFormatter}}</td>
+                            {{#customs_clearance_id}}<td>{{#yesOrNot}}{{launched_in_customs_clearance}}{{/yesOrNot}}</td>{{/customs_clearance_id}}
+                          <td class='money'>{{#valueFormatter}}{{paid}}{{/valueFormatter}}</td>
+                          <td class='money'>{{grouped}}</td>
+                        </tr>
+                        {{#bank_account_movement_installment}}
+                          <tr>
+                            <td colspan="{{#customs_clearance_id}}14{{/customs_clearance_id}}{{^customs_clearance_id}}13{{/customs_clearance_id}}">
+                              <h3>Movimentação</h3>
+                              <table style="padding: 0">
+                                <thead>
+                                  <tr>
+                                    <th>Descrição</th>
+                                    <th>Data de movimentação</th>
+                                    <th>Valor (R$)</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td class='reports_link'>
+                                      <a
+                                        href="{{url}}"
+                                        onclick="window.open(this.href,'_blank'); return false;"
+                                      >
+                                        {{description}}
+                                      </a>
+                                    </td>
+                                    <td>
+                                      {{#dateFormatter}}{{movement_date}}{{/dateFormatter}}
+                                    </td>
+                                    <td class='money'>
+                                      {{#valueFormatter}}{{movement_amount}}{{/valueFormatter}}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </td>
+                          </tr>
+                        {{/bank_account_movement_installment}}
+                        {{/financial_downs}}
+                        {{^financial_downs}}
+                          <!-- else -->
+                          <tr colspan="{{#customs_clearance_id}}13{{/customs_clearance_id}}{{^customs_clearance_id}}12{{/customs_clearance_id}}">
+                            <td colspan='13'>SEM REGISTROS</td>
+                          </tr>
+                        {{/financial_downs}}
+                    </tbody>
+                  </table>
+                </div>
+
+                {{#related}}
+                  <h2>Pagamento agrupado</h2>
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th>Vencimento</th>
+                        <th>Valor (R$)</th>
+                        <th>
+                          {{#payable_account}}
+                            Pago
+                          {{/payable_account}}
+                          {{^payable_account}}
+                            Recebido
+                          {{/payable_account}}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {{#relateds}}
+                        <tr>
+                          <td class='reports_link'><a href='{{url}}' onclick="window.open(this.href,'_blank'); return false;">
+                            {{user_description}}
+                          </td>
+                          <td>{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                          <td class='money'>{{#valueFormatter}}{{launch_amount}}{{/valueFormatter}}</td>
+                          <td class='money'>{{#valueFormatter}}{{down_net_amount}}{{/valueFormatter}}</td>
+                        </tr>
+                      {{/relateds}}
+                    </tbody>
+                  </table>
+                {{/related}}
+              </div>
+            </div>
+          {{/_source}}
+        {{/payload}}
+      {{/financialLaunchIndex}}
+	</body>
+</html>

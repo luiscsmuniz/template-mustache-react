@@ -1,0 +1,43 @@
+{
+  "query": {
+    "must": [
+        {
+            "match": {
+                "launch_operation": "receivable_account"
+            }
+        },
+        {
+            "nested": {
+                "path": "downs",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "range": {
+                                    "downs.down_date": {
+                                        "gte": "2024-06-01",
+                                        "lte": "2024-06-06"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": {}
+            }
+        }
+    ],
+    "must_not": [
+        {
+            "exists": {
+                "field": "deleted_at"
+            }
+        },
+        {
+            "exists": {
+                "field": "apportionments"
+            }
+        }
+    ]
+}
+}

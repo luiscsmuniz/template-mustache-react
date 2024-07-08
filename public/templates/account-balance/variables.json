@@ -1,0 +1,21 @@
+{
+  "query": {
+    "must": [
+        {
+          "nested": {
+            "path": "bank_account",
+            "query": {
+              "bool": {
+                "must": {
+                    "exists": {
+                      "field": "bank_account.id"
+                    }
+                }
+              }
+            }
+          }
+        }
+    ],
+    "must_not": null
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "query": {
+    "must": [
+        {
+          "exists": {
+            "field": "due_date"
+          }
+        }
+    ],
+    "must_not": []
+  }
+}

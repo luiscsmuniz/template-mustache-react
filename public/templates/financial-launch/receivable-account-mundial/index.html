@@ -1,0 +1,162 @@
+<html dir="ltr" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml">
+  <body class="report">
+      <div class="wrapper">
+      {{#financialLaunchIndex}}
+        <table>
+          <thead class="frozen fixed">
+            <tr class="tr_frozen tr_frozen_0">
+              <th colspan="{{launchColspan}}"><div>Lançamento</div></th>
+              <th colspan="{{receivableColspan}}"><div>
+                Recebimento
+              </div></th>
+            </tr>
+            <tr class="tr_frozen tr_frozen_1">
+              {{^groupedByDueDate}}
+                <th><div>Vencimento</div></th>
+              {{/groupedByDueDate}}
+              <th><div>Descrição</div></th>
+              {{^groupedByEntity}}
+                <th><div>Entidade</div></th>
+              {{/groupedByEntity}}
+              <th class="column_80"><div>Emissão</div></th>
+              <th><div>A receber (R$)</div></th>
+              <th><div>Recebido via</div></th>
+              <th><div>Meio de recebimento</div></th>
+              <th><div>Recebido em</div></th>
+              <th><div>Recebido (R$)</div></th>
+              <th><div>Dif. (R$)</div></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {{#items}}
+              <tr>
+                <td rowspan="{{rowspan}}">{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                <td rowspan="{{rowspan}}" class="reports_link" style="max-width: 120px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">
+                  <a
+                    href="{{detailedUrlItem}}"
+                    onclick="window.open(this.href,'_blank'); return false;"
+                    title="{{user_description}}"
+                  >{{user_description}}</a>
+                </td>
+                <td rowspan="{{rowspan}}">{{entity.social_reason}}</td>
+                <td rowspan="{{rowspan}}">{{document_date}}</td>
+                <td rowspan="{{rowspan}}" class="money">{{#valueFormatter}}{{launch_amount}}{{/valueFormatter}}</td>
+                <td rowspan="1">{{firstDown.bank_account.name}}</td>
+                <td rowspan="1">{{firstDown.payment_mean.name}}</td>
+                <td rowspan="1">{{#dateFormatter}}{{firstDown.down_date}}{{/dateFormatter}}</td>
+                <td rowspan="1" class="money">{{#valueFormatter}}{{firstDown.paid}}{{/valueFormatter}}</td>
+                <td rowspan="{{rowspan}}" class="money">{{#valueFormatter}}{{diff_paid_estimated}}{{/valueFormatter}}</td>
+              </tr>
+              {{#downs}}
+                <tr>
+                  <td rowspan="1">{{bank_account.name}}</td>
+                  <td rowspan="1">{{payment_mean.name}}</td>
+                  <td rowspan="1">{{#dateFormatter}}{{down_date}}{{/dateFormatter}}</td>
+                  <td rowspan="1" class="money">{{#valueFormatter}}{{paid}}{{/valueFormatter}}</td>
+                </tr>
+              {{/downs}}
+              {{#subTotalPaid}}
+                <tr>
+                  <td rowspan="1" colspan="{{tdTotalSpan}}" class="right bold">Total</td>
+                    <td rowspan="1" class="money">{{#valueFormatter}}{{subTotalPaid}}{{/valueFormatter}}</td>
+                </tr>
+              {{/subTotalPaid}}
+            {{/items}}
+            {{#groupedItems}}
+              <tr style="background-color: #d9d9d6;">
+                {{#groupedByDueDate}}
+                  <td colspan="{{colSpan}}">
+                    {{#dateFormatter}}{{groupFieldName}}{{/dateFormatter}}
+                  </td>
+                {{/groupedByDueDate}}
+                {{^groupedByDueDate}}
+                  <td colspan="{{colSpan}}">
+                    {{groupFieldName}}
+                  </td>
+                {{/groupedByDueDate}}
+              </tr>
+              {{#list}}
+                <tr>
+                  {{^groupedByDueDate}}
+                    <td rowspan="{{rowspan}}">{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                  {{/groupedByDueDate}}
+                  <td rowspan="{{rowspan}}" class="reports_link" style="max-width: 120px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">
+                    <a
+                      href="{{detailedUrlItem}}"
+                      onclick="window.open(this.href,'_blank'); return false;"
+                      title="{{user_description}}"
+                    >{{user_description}}</a>
+                  </td>
+                  {{^groupedByEntity}}
+                    <td rowspan="{{rowspan}}">{{entity.social_reason}}</td>
+                  {{/groupedByEntity}}
+                  <td rowspan="{{rowspan}}">{{document_date}}</td>
+                  <td rowspan="{{rowspan}}" class="money">{{#valueFormatter}}{{launch_amount}}{{/valueFormatter}}</td>
+                  <td>{{firstDown.bank_account.name}}</td>
+                  <td>{{firstDown.payment_mean.name}}</td>
+                  <td rowspan="1">{{#dateFormatter}}{{firstDown.down_date}}{{/dateFormatter}}</td>
+                  <td rowspan="1" class="money">{{#valueFormatter}}{{firstDown.paid}}{{/valueFormatter}}</td>
+                  <td rowspan="{{rowspan}}" class="money">{{#valueFormatter}}{{diff_paid_estimated}}{{/valueFormatter}}</td>
+                </tr>
+                {{#downs}}
+                  <tr>
+                    <td rowspan="1">{{bank_account.name}}</td>
+                      <td rowspan="1">{{payment_mean.name}}</td>
+                      <td rowspan="1">{{#dateFormatter}}{{down_date}}{{/dateFormatter}}</td>
+                      <td rowspan="1" class="money">{{#valueFormatter}}{{paid}}{{/valueFormatter}}</td>
+                  </tr>
+                {{/downs}}
+                {{#subTotalPaid}}
+                  <tr>
+                    <td rowspan="1" colspan="{{tdTotalSpan}}" class="right bold">Total</td>
+                      <td rowspan="1" class="money">{{#valueFormatter}}{{subTotalPaid}}{{/valueFormatter}}</td>
+                  </tr>
+                {{/subTotalPaid}}
+              {{/list}}
+              <tr class="total bold">
+                <td class="money" colspan="{{subTotalColspan}}">Subtotal</td>
+                <td class="money">{{#valueFormatter}}{{subTotalAmount}}{{/valueFormatter}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="money">{{#valueFormatter}}{{subTotalPaid}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{subTotalDiff}}{{/valueFormatter}}</td>
+              </tr>
+						{{/groupedItems}}
+						{{#noPayload}}
+							<tr><td colspan="{{noPayloadColspan}}">{{#isEmpty}}{{/isEmpty}}</td></tr>
+						{{/noPayload}}
+					</tbody>
+					{{^noPayload}}
+          <tfoot>
+            <tr class="total bold">
+              <td class="money" colspan="{{totalColspan}}">TOTAL</td>
+              <td class="money">{{#valueFormatter}}{{totalLaunchAmount}}{{/valueFormatter}}</td>
+              <td class="money">{{td}}</td>
+              <td>{{td}}</td>
+              <td>{{td}}</td>
+              <td class="money">{{#valueFormatter}}{{totalPaid}}{{/valueFormatter}}</td>
+              <td class="money">{{#valueFormatter}}{{totalDiff}}{{/valueFormatter}}</td>
+            </tr>
+					</tfoot>
+					{{/noPayload}}
+        </table>
+      {{/financialLaunchIndex}}
+      {{^financialLaunchIndex}}
+        <table>
+          <thead class="frozen">
+            <tr class="tr_frozen tr_frozen_0">
+              <th><div></div></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Houve um problema ao buscar os dados</td>
+              </tr>
+            </tbody>
+        </table>
+      {{/financialLaunchIndex}}
+    </div>
+	</body>
+</html>

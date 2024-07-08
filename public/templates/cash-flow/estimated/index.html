@@ -1,0 +1,152 @@
+<html dir="ltr" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml">
+  <body class="report">
+      <div class="wrapper">
+      {{#financialLaunchIndex}}
+        <table class="cash_flow">
+          <thead class="frozen fixed">
+            {{#showBalance}}
+              <tr class="let-it-go">
+                <td class="bold" style="text-align:right" colspan="{{balanceColspan}}">Saldo inicial (R$)</td>
+                {{#error}}
+                  <td class="">{{#initialBalanceError}}{{/initialBalanceError}}</td>
+                {{/error}}
+                {{^error}}
+                  <td class="money bold">{{#valueFormatter}}{{estimatedBalance}}{{/valueFormatter}}</td>
+                {{/error}}
+              </tr>
+            {{/showBalance}}
+            <tr class="tr_frozen tr_frozen_0">
+              <th colspan="{{launchColspan}}"><div>Lançamento</div></th>
+              {{#showBalance}}
+                <th colspan="1"></th>
+              {{/showBalance}}
+            </tr>
+            <tr class="tr_frozen tr_frozen_1">
+              <th><div>Descrição</div></th>
+              {{^groupedByCompany}}
+                <th><div>Empresa</div></th>
+              {{/groupedByCompany}}
+              {{^groupedByEntity}}
+              <th colspan="3"><div>Entidade</div></th>
+              {{/groupedByEntity}}
+              {{^groupedByPlanAccount}}
+              <th colspan="2"><div>Plano de Contas</div></th>
+              {{/groupedByPlanAccount}}
+              {{^groupedByCostCenter}}
+              <th><div>C. Custo</div></th>
+              {{/groupedByCostCenter}}
+              {{^groupedByCustomsClearance}}
+              <th><div>Desembaraço</div></th>
+              {{/groupedByCustomsClearance}}
+              <th><div>Embarque</div></th>
+              {{^groupedByProject}}
+              <th><div>Projeto</div></th>
+              {{/groupedByProject}}
+              <th class="money column_60"><div>Vencimento</div></th>
+              {{#showRetentions}}
+                <th class="money column_100">Retenções (R$)</div></th>
+              {{/showRetentions}}
+              <th class="money column_100"><div>A Pagar (R$)</div></th>
+              <th class="money column_100"><div>A Receber (R$)</div></th>
+              {{#showBalance}}
+                <th class="money column_100"><div>SALDO PREVISTO (R$)</div></th>
+              {{/showBalance}}
+            </tr>
+          </thead>
+          <tbody>
+            {{#items}}
+              <tr>
+                <td class="line_group_featured_2" colspan="{{groupedColspan}}">{{groupedField}}</td>
+              </tr>
+              {{#groupedByDateField}}
+                <tr>
+                  <td class="line_group_featured" colspan="{{groupedColspan}}">{{#dateFormatter}}{{dateGrouped}}{{/dateFormatter}}</td>
+                </tr>
+                {{#items}}
+                  <tr class="even">
+                    <td>{{user_description}}</td>
+                    {{^groupedByCompany}}
+                      <td>{{company_name}}</td>
+                    {{/groupedByCompany}}
+                    {{^groupedByEntity}}
+                      <td>{{entity.social_reason}}</td>
+                      <td>{{#entityTypeTranslate}}{{entity.type}}{{/entityTypeTranslate}}</td>
+                      <td class="nowrap">{{#cnpjFormatter}}{{entity.national_identifier}}{{/cnpjFormatter}}</td>
+                    {{/groupedByEntity}}
+                    {{^groupedByPlanAccount}}
+                      <td>{{plan_account.reference}}</td>
+                      <td>{{plan_account.name}}</td>
+                    {{/groupedByPlanAccount}}
+                    {{^groupedByCostCenter}}
+                      <td>{{cost_center_name}}</td>
+                    {{/groupedByCostCenter}}
+                    {{^groupedByCustomsClearance}}
+                      <td>{{customs_clearance.reference}}</td>
+                    {{/groupedByCustomsClearance}}
+                    <td>{{shipment.reference}}</td>
+                    {{^groupedByProject}}
+                      <td>{{project.name}}</td>
+                    {{/groupedByProject}}
+                    <td>{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                    {{#showRetentions}}
+                      <td class="money">{{#valueFormatter}}{{retention_total_amount}}{{/valueFormatter}}</td>
+                    {{/showRetentions}}
+                    <td class="money">{{#valueFormatter}}{{amount_payable}}{{/valueFormatter}}</td>
+                    <td class="money">{{#valueFormatter}}{{amount_receivable}}{{/valueFormatter}}</td>
+                    {{#showBalance}}
+                      <td class="money">{{#valueFormatter}}{{sum_estimated_balance}}{{/valueFormatter}}</td>
+                    {{/showBalance}}
+                  </tr>
+                {{/items}}
+                <tr class="total bold">
+                  <td colspan="{{totalColspan}}">SUB-TOTAL</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalLaunchAmountPayable}}{{/valueFormatter}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalLaunchAmountReceivable}}{{/valueFormatter}}</td>
+                  {{#showBalance}}
+                    <td class="money">{{#valueFormatter}}{{subTotalEstimatedBalance}}{{/valueFormatter}}</td>
+                  {{/showBalance}}
+                </tr>
+              {{/groupedByDateField}}
+              <tr class="total bold">
+                <td colspan="{{totalColspan}}">TOTAL ({{groupedField}})</td>
+                <td class="money">{{#valueFormatter}}{{totalGroupedLaunchAmountPayable}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{totalGroupedLaunchAmountReceivable}}{{/valueFormatter}}</td>
+                {{#showBalance}}
+                  <td class="money">{{#valueFormatter}}{{totalGroupedEstimatedBalance}}{{/valueFormatter}}</td>
+                {{/showBalance}}
+              </tr>
+            {{/items}}
+            <tr class="total bold">
+              <td colspan="{{totalColspan}}">TOTAL</td>
+              <td class="money">{{#valueFormatter}}{{totalLaunchAmountPayable}}{{/valueFormatter}}</td>
+              <td class="money">{{#valueFormatter}}{{totalLaunchAmountReceivable}}{{/valueFormatter}}</td>
+              {{#showBalance}}
+                <td class="money">{{#valueFormatter}}{{totalEstimatedBalance}}{{/valueFormatter}}</td>
+              {{/showBalance}}
+            </tr>
+            {{#showBalance}}
+              <tr>
+                <td class="bold" style="text-align:right" colspan="{{balanceColspan}}">Saldo final (R$)</td>
+                <td class="money bold">{{#valueFormatter}}{{totalEstimatedBalance}}{{/valueFormatter}}</td>
+              </tr>
+            {{/showBalance}}
+          </tbody>
+        </table>
+      {{/financialLaunchIndex}}
+      {{^financialLaunchIndex}}
+      <table>
+        <thead class="frozen">
+          <tr class="tr_frozen tr_frozen_0">
+            <th><div></div></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Houve um problema ao buscar os dados</td>
+            </tr>
+          </tbody>
+      </table>
+      {{/financialLaunchIndex}}
+    </div>
+	</body>
+</html>

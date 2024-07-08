@@ -1,0 +1,446 @@
+<html dir="ltr" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml">
+  <body class="report">
+    <div class="wrapper">
+      {{#financialLaunchIndex}}
+        <table class="table_levels">
+          <thead class="frozen fixed">
+            <tr class="tr_frozen tr_frozen_0">
+              <th><div>Referência</div></th>
+              <th><div>Plano de contas</div></th>
+              <th><div>Total (R$)</div></th>
+            </tr>
+          </thead>
+          <tbody class="highlight_all_lines">
+            {{#grossOperatingIncome}}
+              <tr id="receita-operacional-bruta" class="level_1 bold">
+                <td colspan="2">
+                  <span>(+) RECEITA OPERACIONAL BRUTA</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{grossOperatingIncomeTotal}}{{/valueFormatter}}</td>
+              </tr>
+              <tr id="vendas-de-produtos" class="level_2 bold receita-operacional-bruta" style="display: table-row;">
+                <td colspan="2">
+                  <span>Vendas de produtos</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{productSalesTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#productSales}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-produtos">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/productSales}}
+              <tr id="vendas-de-mercadorias" class="level_2 bold receita-operacional-bruta" style="display: table-row;">
+                <td colspan="2">
+                  <span>Vendas de mercadorias</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{merchandiseSalesTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#merchandiseSales}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-mercadorias">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/merchandiseSales}}
+              <tr id="vendas-de-serviços" class="level_2 bold receita-operacional-bruta" style="display: table-row;">
+                <td colspan="2">
+                  <span>Vendas de serviços</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{serviceSalesTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#serviceSales}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/serviceSales}}
+            {{/grossOperatingIncome}}
+            {{#deductionGrossRevenue}}
+              <tr id="deducao-da-receita-bruta" class="level_1 bold">
+                <td colspan="2">
+                  <span>(-) DEDUÇÃO DA RECEITA BRUTA</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{deductionGrossRevenueTotal}}{{/valueFormatter}}</td>
+              </tr>
+              <tr id="devolucoes-de-vendas" class="level_2 bold deducao-da-receita-bruta" style="display: table-row;">
+                <td colspan="2">
+                  <span>Devoluções de vendas</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{returnsTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#returns}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/returns}}
+              <tr id="abatimentos" class="level_2 bold deducao-da-receita-bruta" style="display: table-row;">
+                <td colspan="2">
+                  <span>Abatimentos</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{rebatesTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#rebates}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/rebates}}
+              <tr id="abatimentos" class="level_2 bold deducao-da-receita-bruta" style="display: table-row;">
+                <td colspan="2">
+                  <span>Impostos e contribuições incidentes sobre vendas</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{rebatesTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#taxes}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/taxes}}
+            {{/deductionGrossRevenue}}
+
+            <tr id="receita-operacional-liquida" class="level_1 bold">
+              <td colspan="2">
+                <span>= RECEITA OPERACIONAL LÍQUIDA</span>
+              </td>
+              <td class="money">{{#valueFormatter}}{{netOperatingRevenue}}{{/valueFormatter}}</td>
+            </tr>
+
+            {{#salesCosts}}
+              <tr id="custos-das-vendas" class="level_1 bold">
+                <td colspan="2">
+                  <span>(-) CUSTOS DAS VENDAS</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{salesCostsTotal}}{{/valueFormatter}}</td>
+              </tr>
+              <tr id="devolucoes-de-vendas" class="level_2 bold deducao-da-receita-bruta" style="display: table-row;">
+                <td colspan="2">
+                  <span>Custo dos produtos vendidos</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{productSalesCostsTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#productSalesCosts}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/productSalesCosts}}
+              <tr id="devolucoes-de-vendas" class="level_2 bold deducao-da-receita-bruta" style="display: table-row;">
+                <td colspan="2">
+                  <span>Custo das mercadorias</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{merchandiseCostsTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#merchandiseCosts}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/merchandiseCosts}}
+              <tr id="devolucoes-de-vendas" class="level_2 bold deducao-da-receita-bruta" style="display: table-row;">
+                <td colspan="2">
+                  <span>Custo dos serviços prestados</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{serviceCostsTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#serviceCosts}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/serviceCosts}}
+            {{/salesCosts}}
+
+            <tr id="resultado-operacional-bruto" class="level_1 bold">
+              <td colspan="2">
+                <span>= RESULTADO OPERACIONAL BRUTO</span>
+              </td>
+              <td class="money">{{#valueFormatter}}{{grossOperatingResults}}{{/valueFormatter}}</td>
+            </tr>
+
+            {{#operationalExpenses}}
+              <tr id="despesas-operacionais" class="level_1 bold">
+                <td colspan="2">
+                  <span>(-) DESPESAS OPERACIONAIS</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{operationalExpensesTotal}}{{/valueFormatter}}</td>
+              </tr>
+              <tr id="devolucoes-de-vendas" class="level_2 bold deducao-da-receita-bruta" style="display: table-row;">
+                <td colspan="2">
+                  <span>Despesas administrativas</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{administrativeCostsTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#administrativeCosts}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/administrativeCosts}}
+
+              <tr id="devolucoes-de-vendas" class="level_2 bold deducao-da-receita-bruta" style="display: table-row;">
+                <td colspan="2">
+                  <span>Despesas com vendas</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{sellingExpensesTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#sellingExpenses}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/sellingExpenses}}
+            {{/operationalExpenses}}
+
+            {{#netFinancialExpenses}}
+              <tr id="despesas-financeiras-liquidas" class="level_1 bold">
+                <td colspan="2">
+                  <span>(-) DESPESAS FINANCEIRAS LÍQUIDAS</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{netFinancialExpensesTotal}}{{/valueFormatter}}</td>
+              </tr>
+              <tr id="receitas-financeiras" class="level_2 bold despesas-financeiras-liquidas" style="display: table-row;">
+                <td colspan="2">
+                  <span>(+) Receitas financeiras</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{financialIncomeTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#financialIncome}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/financialIncome}}
+
+              <tr id="receitas-financeiras" class="level_2 bold despesas-financeiras-liquidas" style="display: table-row;">
+                <td colspan="2">
+                  <span>(-) Despesas financeiras</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{financialExpensesTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#financialExpenses}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/financialExpenses}}
+
+              <tr id="receitas-financeiras" class="level_2 bold despesas-financeiras-liquidas" style="display: table-row;">
+                <td colspan="2">
+                  <span>(+) Variações monetárias e cambiais ativas</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{activeMonetaryExchangeVariationsTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#activeMonetaryExchangeVariations}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/activeMonetaryExchangeVariations}}
+
+              <tr id="receitas-financeiras" class="level_2 bold despesas-financeiras-liquidas" style="display: table-row;">
+                <td colspan="2">
+                  <span>(-) Variações monetárias e cambiais passivas</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{passiveMonetaryExchangeVariationsTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#passiveMonetaryExchangeVariations}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/passiveMonetaryExchangeVariations}}
+            {{/netFinancialExpenses}}
+
+            {{#otherIncomeExpenses}}
+              <tr id="outras-receitas-e-despesas" class="level_1 bold">
+                <td colspan="2">
+                  <span>OUTRAS RECEITAS E DESPESAS</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{otherIncomeExpensesTotal}}{{/valueFormatter}}</td>
+              </tr>
+              <tr id="custo-da-venda-de-bens-e-direitos-do-ativo-nao-circulante" class="level_2 bold outras-receitas-e-despesas" style="display: table-row;">
+                <td colspan="2">
+                  <span>(-) Custo da venda de bens e direitos do ativo não circulante</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{nonCurrentAssetSalesCostTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#nonCurrentAssetSalesCost}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/nonCurrentAssetSalesCost}}
+
+              <tr id="custo-da-venda-de-bens-e-direitos-do-ativo-nao-circulante" class="level_2 bold outras-receitas-e-despesas" style="display: table-row;">
+                <td colspan="2">
+                  <span>(+) Venda de bens e direitos do ativo não circulante</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{nonCurrentAssetSalesTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#nonCurrentAssetSales}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/nonCurrentAssetSales}}
+
+              <tr id="custo-da-venda-de-bens-e-direitos-do-ativo-nao-circulante" class="level_2 bold outras-receitas-e-despesas" style="display: table-row;">
+                <td colspan="2">
+                  <span>(+) Outras receitas</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{otherIncomeTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#otherIncome}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/otherIncome}}
+
+              <tr id="custo-da-venda-de-bens-e-direitos-do-ativo-nao-circulante" class="level_2 bold outras-receitas-e-despesas" style="display: table-row;">
+                <td colspan="2">
+                  <span>(-) Outras despesas</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{otherExpensesTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#otherExpenses}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/otherExpenses}}
+
+              <tr id="custo-da-venda-de-bens-e-direitos-do-ativo-nao-circulante" class="level_2 bold outras-receitas-e-despesas" style="display: table-row;">
+                <td colspan="2">
+                  <span>(+) Resultado da equivalência patrimonial</span>
+                </td>
+                <td class="money">{{#valueFormatter}}{{equityAccountingResultTotal}}{{/valueFormatter}}</td>
+              </tr>
+              {{#equityAccountingResult}}
+                <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                  <td class="to_s">
+                    <span>{{planAccountReference}}</span>
+                  </td>
+                  <td>{{planAccountName}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+                </tr>
+              {{/equityAccountingResult}}
+            {{/otherIncomeExpenses}}
+
+            <tr id="resultado-operacional-antes-do-ir-e-csll" class="level_1 bold">
+              <td colspan="2">
+                <span>= RESULTADO OPERACIONAL ANTES DO IR E CSLL</span>
+              </td>
+              <td class="money">{{#valueFormatter}}{{operatingIncomeBeforeIRCSLL}}{{/valueFormatter}}</td>
+            </tr>
+
+            <tr id="provisao-para-ir-e-csll" class="level_1 bold    without_auto_open">
+              <td colspan="2">
+                <span>(-) Provisão para IR e CSLL</span>
+              </td>
+              <td class="money">{{#valueFormatter}}{{provisionIRCSLLTotal}}{{/valueFormatter}}</td>
+            </tr>
+            {{#provisionIRCSLL}}
+              <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                <td class="to_s">
+                  <span>{{planAccountReference}}</span>
+                </td>
+                <td>{{planAccountName}}</td>
+                <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+              </tr>
+            {{/provisionIRCSLL}}
+
+            <tr id="lucro-liquido-antes-das-participacoes" class="level_1 bold">
+              <td colspan="2">
+                <span>= LUCRO LÍQUIDO ANTES DAS PARTICIPAÇÕES</span>
+              </td>
+              <td class="money">{{#valueFormatter}}{{netIncomeBeforeParticipations}}{{/valueFormatter}}</td>
+            </tr>
+
+            <tr id="debentures-empregados-participacoes-de-administradores-partes-beneficiarias-fundos-de-assistencia-e-previdencia-para-empregados" class="level_1 bold   without_auto_open">
+              <td colspan="2">
+                <span>(-) Debêntures, Empregados, Participações de Administradores, Partes Beneficiárias, Fundos de Assistência e Previdência para Empregados</span>
+              </td>
+              <td class="money">{{#valueFormatter}}{{debenturesEmployeesAdministratorsSharesTotal}}{{/valueFormatter}}</td>
+            </tr>
+            {{#debenturesEmployeesAdministratorsShares}}
+              <tr id="plan-account-9807" class="level_3  vendas-de-serviços">
+                <td class="to_s">
+                  <span>{{planAccountReference}}</span>
+                </td>
+                <td>{{planAccountName}}</td>
+                <td class="money">{{#valueFormatter}}{{subTotalPlanAccount}}{{/valueFormatter}}</td>
+              </tr>
+            {{/debenturesEmployeesAdministratorsShares}}
+
+            <tr id="resultado-liquido-do-exercicio" class="level_1 bold">
+              <td colspan="2">
+                <span>= RESULTADO LÍQUIDO DO EXERCÍCIO</span>
+              </td>
+              <td class="money">{{#valueFormatter}}{{netIncomeFinancialYear}}{{/valueFormatter}}</td>
+            </tr>
+          </tbody>
+        </table>
+      {{/financialLaunchIndex}}
+    </div>
+	</body>
+</html>

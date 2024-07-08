@@ -1,0 +1,55 @@
+{
+  "query": {
+    "must": [
+        {
+            "nested": {
+                "path": "downs",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "range": {
+                                    "downs.down_date": {
+                                        "gte": "2014-07-01",
+                                        "lte": "2023-09-30"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": {}
+            }
+        },
+        {
+          "nested": {
+              "path": "shipment",
+              "query": {
+                  "bool": {
+                      "must": [
+                          {
+                              "exists": {
+                                  "field": "shipment.id"
+                              }
+                          }
+                      ]
+                  }
+              },
+              "inner_hits": null
+          }
+      }
+    ],
+    "must_not": [
+        {
+            "exists": {
+                "field": "deleted_at"
+            }
+        },
+        {
+            "exists": {
+                "field": "apportionments"
+            }
+        }
+    ]
+}
+}

@@ -1,0 +1,31 @@
+{
+  "query": {
+    "must": [
+        {
+            "range": {
+                "due_date": {
+                    "gte": "2024-06-01",
+                    "lte": "2024-06-14"
+                }
+            }
+        },
+        {
+            "match": {
+                "launch_operation": "receivable_account"
+            }
+        }
+    ],
+    "must_not": [
+        {
+            "exists": {
+                "field": "deleted_at"
+            }
+        },
+        {
+            "exists": {
+                "field": "apportionments"
+            }
+        }
+    ]
+}
+}

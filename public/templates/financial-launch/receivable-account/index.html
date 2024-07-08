@@ -1,0 +1,337 @@
+<html dir="ltr" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml">
+  <body class="report">
+      <div class="wrapper">
+      {{#financialLaunchIndex}}
+        <table>
+          <thead class="frozen fixed">
+            <tr class="tr_frozen tr_frozen_0">
+              <th colspan="{{launchColspan}}"><div>Lançamento</div></th>
+              <th colspan="{{receivableColspan}}"><div>
+                Recebimento
+              </div></th>
+              <th></th>
+              {{#showObservation}}
+                <th></th>
+              {{/showObservation}}
+            </tr>
+            <tr class="tr_frozen tr_frozen_1">
+              {{^groupedByDueDate}}
+                <th><div>Vencimento</div></th>
+              {{/groupedByDueDate}}
+              {{^groupedByCompany}}
+                <th><div>Empresa</div></th>
+              {{/groupedByCompany}}
+              <th><div>Descrição</div></th>
+              {{^groupedByEntity}}
+                <th colspan="3"><div>Entidade</div></th>
+              {{/groupedByEntity}}
+              <th><div>Documento</div></th>
+              <th class="column_80"><div>Emissão</div></th>
+              {{^groupedByPlanAccount}}
+                <th colspan="2"><div>Plano de Contas</div></th>
+              {{/groupedByPlanAccount}}
+              {{^groupedByCostCenter}}
+                <th><div>C. Custo</div></th>
+              {{/groupedByCostCenter}}
+              {{^groupedByCustomsClearance}}
+                <th><div>Desembaraço</div></th>
+              {{/groupedByCustomsClearance}}
+              {{^groupedByProject}}
+                <th><div>Projeto</div></th>
+              {{/groupedByProject}}
+              <th><div>Competência</div></th>
+              <th><div>A receber (R$)</div></th>
+              {{#showRetentions}}
+                <th><div>RETENÇÕES (R$)</div></th>
+              {{/showRetentions}}
+              <th><div>Recebido via</div></th>
+              <th><div>Meio de recebimento</div></th>
+              {{#accountingAccount}}
+                <th><div>Conta contábil débito</div></th>
+                <th><div>Conta contábil crédito</div></th>
+              {{/accountingAccount}}
+              <th><div>Recebido em</div></th>
+              {{#showFineInterestDiscount}}
+                <th><div>Multa (R$)</div></th>
+                <th><div>Juros (R$)</div></th>
+                <th><div>Desconto (R$)</div></th>
+              {{/showFineInterestDiscount}}
+              <th><div>Recebido (R$)</div></th>
+              <th><div>Dif. (R$)</div></th>
+              {{#showObservation}}
+                <th><div>Observação</div></th>
+              {{/showObservation}}
+            </tr>
+          </thead>
+
+          <tbody>
+            {{#items}}
+              <tr>
+                <td rowspan="{{rowspan}}">{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                <td rowspan="{{rowspan}}">{{company_name}}</td>
+                <td rowspan="{{rowspan}}" class="reports_link" style="max-width: 120px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">
+                  <a
+                    href="{{detailedUrlItem}}"
+                    onclick="window.open(this.href,'_blank'); return false;"
+                    title="{{user_description}}"
+                  >{{user_description}}</a>
+                </td>
+                <td rowspan="{{rowspan}}">{{entity.social_reason}}</td>
+                <td rowspan="{{rowspan}}">{{#entityTypeTranslate}}{{entity.type}}{{/entityTypeTranslate}}</td>
+                <td rowspan="{{rowspan}}" class="nowrap">{{#cnpjFormatter}}{{entity.national_identifier}}{{/cnpjFormatter}}</td>
+                <td rowspan="{{rowspan}}">{{document_number}}</td>
+                <td rowspan="{{rowspan}}">{{document_date}}</td>
+                <td rowspan="{{rowspan}}">{{plan_account.reference}}</td>
+                <td rowspan="{{rowspan}}">{{plan_account.name}}</td>
+                <td rowspan="{{rowspan}}">
+                  {{cost_center.name}}
+                </td>
+                <td rowspan="{{rowspan}}">
+                  {{customs_clearance.reference}}
+                </td>
+                <td rowspan="{{rowspan}}">{{project.name}}</td>
+                <td rowspan="{{rowspan}}">{{#monthYearFormatter}}{{accrual_month}}{{/monthYearFormatter}}</td>
+                <td rowspan="{{rowspan}}" class="money">{{#valueFormatter}}{{launch_amount}}{{/valueFormatter}}</td>
+                {{#showRetentions}}
+                  <td rowspan="{{rowspan}}" class="money">{{#valueFormatter}}{{retention_total_amount}}{{/valueFormatter}}</td>
+                {{/showRetentions}}
+                <td rowspan="1">{{firstDown.bank_account.name}}</td>
+                <td rowspan="1">{{firstDown.payment_mean.name}}</td>
+                {{#accountingAccount}}
+                  <td rowspan="1">{{firstDown.debit_plan_account.reference}}</td>
+                  <td rowspan="1">{{firstDown.credit_plan_account.reference}}</td>
+                {{/accountingAccount}}
+                <td rowspan="1">{{#dateFormatter}}{{firstDown.down_date}}{{/dateFormatter}}</td>
+                {{#showFineInterestDiscount}}
+                  <td rowspan="1" class="money">
+                    {{#valueFormatter}}{{firstDown.fine}}{{/valueFormatter}}
+                  </td>
+                  <td rowspan="1" class="money">
+                    {{#valueFormatter}}{{firstDown.interest}}{{/valueFormatter}}
+                  </td>
+
+                  <td rowspan="1" class="money">{{#valueFormatter}}{{firstDown.discount}}{{/valueFormatter}}</td>
+                {{/showFineInterestDiscount}}
+                <td rowspan="1" class="money">{{#valueFormatter}}{{firstDown.paid}}{{/valueFormatter}}</td>
+                <td rowspan="{{rowspan}}" class="money">{{#valueFormatter}}{{diff_paid_estimated}}{{/valueFormatter}}</td>
+                {{#showObservation}}
+                  <td rowspan="{{rowspan}}" class="money">{{observation}}</td>
+                {{/showObservation}}
+              </tr>
+              {{#downs}}
+                <tr>
+                  <td rowspan="1">{{bank_account.name}}</td>
+                    <td rowspan="1">{{payment_mean.name}}</td>
+                    {{#accountingAccount}}
+                      <td rowspan="1">{{down.debit_plan_account.reference}}</td>
+                      <td rowspan="1">{{down.credit_plan_account.reference}}</td>
+                    {{/accountingAccount}}
+                    <td rowspan="1">{{#dateFormatter}}{{down_date}}{{/dateFormatter}}</td>
+                    {{#showFineInterestDiscount}}
+                      <td rowspan="1" class="money">
+                        {{#valueFormatter}}{{fine}}{{/valueFormatter}}
+                      </td>
+                      <td rowspan="1" class="money">
+                        {{#valueFormatter}}{{interest}}{{/valueFormatter}}
+                      </td>
+                      <td rowspan="1" class="money">{{#valueFormatter}}{{discount}}{{/valueFormatter}}</td>
+                    {{/showFineInterestDiscount}}
+                  <td rowspan="1" class="money">{{#valueFormatter}}{{paid}}{{/valueFormatter}}</td>
+                </tr>
+              {{/downs}}
+              {{#subTotalPaid}}
+                <tr>
+                  <td rowspan="1" colspan="{{tdTotalSpan}}" class="right bold">Total</td>
+                    <td rowspan="1" class="money">{{#valueFormatter}}{{subTotalPaid}}{{/valueFormatter}}</td>
+                </tr>
+              {{/subTotalPaid}}
+            {{/items}}
+            {{#groupedItems}}
+              <tr style="background-color: #d9d9d6;">
+                {{#groupedByDueDate}}
+                  <td colspan="{{colSpan}}">
+                    {{#dateFormatter}}{{groupFieldName}}{{/dateFormatter}}
+                  </td>
+                  {{#showObservation}}
+                    <td></td>
+                  {{/showObservation}}
+                {{/groupedByDueDate}}
+                {{^groupedByDueDate}}
+                  <td colspan="{{colSpan}}">
+                    {{groupFieldName}}
+                  </td>
+                  {{#showObservation}}
+                    <td></td>
+                  {{/showObservation}}
+                {{/groupedByDueDate}}
+              </tr>
+              {{#list}}
+                <tr>
+                  {{^groupedByDueDate}}
+                    <td rowspan="{{rowspan}}">{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                  {{/groupedByDueDate}}
+                  {{^groupedByCompany}}
+                    <td rowspan="{{rowspan}}">{{company_name}}</td>
+                  {{/groupedByCompany}}
+                  <td rowspan="{{rowspan}}" class="reports_link" style="max-width: 120px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">
+                    <a
+                      href="{{detailedUrlItem}}"
+                      onclick="window.open(this.href,'_blank'); return false;"
+                      title="{{user_description}}"
+                    >{{user_description}}</a>
+                  </td>
+                  {{^groupedByEntity}}
+                    <td rowspan="{{rowspan}}">{{entity.social_reason}}</td>
+                    <td rowspan="{{rowspan}}">{{#entityTypeTranslate}}{{entity.type}}{{/entityTypeTranslate}}</td>
+                    <td rowspan="{{rowspan}}" class="nowrap">{{#cnpjFormatter}}{{entity.national_identifier}}{{/cnpjFormatter}}</td>
+                  {{/groupedByEntity}}
+                  <td rowspan="{{rowspan}}">{{document_number}}</td>
+                  <td rowspan="{{rowspan}}">{{document_date}}</td>
+                  {{^groupedByPlanAccount}}
+                    <td rowspan="{{rowspan}}">{{plan_account.reference}}</td>
+                    <td rowspan="{{rowspan}}">{{plan_account.name}}</td>
+                  {{/groupedByPlanAccount}}
+                  {{^groupedByCostCenter}}
+                    <td rowspan="{{rowspan}}">
+                      {{cost_center.name}}
+                    </td>
+                  {{/groupedByCostCenter}}
+                  {{^groupedByCustomsClearance}}
+                    <td rowspan="{{rowspan}}">
+                      {{customs_clearance.reference}}
+                    </td>
+                  {{/groupedByCustomsClearance}}
+                  {{^groupedByProject}}
+                    <td rowspan="{{rowspan}}">{{project.name}}</td>
+                  {{/groupedByProject}}
+                  <td rowspan="{{rowspan}}">{{#monthYearFormatter}}{{accrual_month}}{{/monthYearFormatter}}</td>
+                  <td rowspan="{{rowspan}}" class="money">{{#valueFormatter}}{{launch_amount}}{{/valueFormatter}}</td>
+                  {{#showRetentions}}
+                    <td rowspan="{{rowspan}}" class="money">{{#valueFormatter}}{{retention_total_amount}}{{/valueFormatter}}</td>
+                  {{/showRetentions}}
+                  <td>{{firstDown.bank_account.name}}</td>
+                  <td>{{firstDown.payment_mean.name}}</td>
+                  {{#accountingAccount}}
+                    <td rowspan="1">{{firstDown.debit_plan_account.reference}}</td>
+                    <td rowspan="1">{{firstDown.credit_plan_account.reference}}</td>
+                  {{/accountingAccount}}
+                  <td rowspan="1">{{#dateFormatter}}{{firstDown.down_date}}{{/dateFormatter}}</td>
+                  {{#showFineInterestDiscount}}
+                    <td rowspan="1" class="money">
+                      {{#valueFormatter}}{{firstDown.fine}}{{/valueFormatter}}
+                    </td>
+                    <td rowspan="1" class="money">
+                      {{#valueFormatter}}{{firstDown.interest}}{{/valueFormatter}}
+                    </td>
+                    <td rowspan="1" class="money">{{#valueFormatter}}{{firstDown.discount}}{{/valueFormatter}}</td>
+                  {{/showFineInterestDiscount}}
+                  <td rowspan="1" class="money">{{#valueFormatter}}{{firstDown.paid}}{{/valueFormatter}}</td>
+                  <td rowspan="{{rowspan}}" class="money">{{#valueFormatter}}{{diff_paid_estimated}}{{/valueFormatter}}</td>
+                  {{#showObservation}}
+                    <td rowspan="{{rowspan}}">{{observation}}</td>
+                  {{/showObservation}}
+                </tr>
+                {{#downs}}
+                  <tr>
+                    <td rowspan="1">{{bank_account.name}}</td>
+                      <td rowspan="1">{{payment_mean.name}}</td>
+                      {{#accountingAccount}}
+                        <td rowspan="1">{{down.debit_plan_account.reference}}</td>
+                        <td rowspan="1">{{down.credit_plan_account.reference}}</td>
+                      {{/accountingAccount}}
+                      <td rowspan="1">{{#dateFormatter}}{{down_date}}{{/dateFormatter}}</td>
+                      {{#showFineInterestDiscount}}
+                        <td rowspan="1" class="money">
+                          {{#valueFormatter}}{{fine}}{{/valueFormatter}}
+                        </td>
+                        <td rowspan="1" class="money">
+                          {{#valueFormatter}}{{interest}}{{/valueFormatter}}
+                        </td>
+                        <td rowspan="1" class="money">{{#valueFormatter}}{{discount}}{{/valueFormatter}}</td>
+                      {{/showFineInterestDiscount}}
+                      <td rowspan="1" class="money">{{#valueFormatter}}{{paid}}{{/valueFormatter}}</td>
+                  </tr>
+                {{/downs}}
+                {{#subTotalPaid}}
+                  <tr>
+                    <td rowspan="1" colspan="{{tdTotalSpan}}" class="right bold">Total</td>
+                      <td rowspan="1" class="money">{{#valueFormatter}}{{subTotalPaid}}{{/valueFormatter}}</td>
+                  </tr>
+                {{/subTotalPaid}}
+              {{/list}}
+              <tr class="total bold">
+                <td class="money" colspan="{{subTotalColspan}}">Subtotal</td>
+                <td class="money">{{#valueFormatter}}{{subTotalAmount}}{{/valueFormatter}}</td>
+                {{#showRetentions}}
+                  <td class="money">{{#valueFormatter}}{{subTotalRetention}}{{/valueFormatter}}</td>
+                {{/showRetentions}}
+                <td></td>
+                <td></td>
+                {{#accountingAccount}}
+                  <td></td>
+                  <td></td>
+                {{/accountingAccount}}
+                <td></td>
+                {{#showFineInterestDiscount}}
+                  <td class="money">{{#valueFormatter}}{{subTotalFine}}{{/valueFormatter}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalInterest}}{{/valueFormatter}}</td>
+                  <td class="money">{{#valueFormatter}}{{subTotalDiscount}}{{/valueFormatter}}</td>
+                {{/showFineInterestDiscount}}
+                <td class="money">{{#valueFormatter}}{{subTotalPaid}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{subTotalDiff}}{{/valueFormatter}}</td>
+                {{#showObservation}}
+                  <td></td>
+                {{/showObservation}}
+              </tr>
+						{{/groupedItems}}
+						{{#noPayload}}
+							<tr><td colspan="{{noPayloadColspan}}">{{#isEmpty}}{{/isEmpty}}</td></tr>
+						{{/noPayload}}
+					</tbody>
+					{{^noPayload}}
+          <tfoot>
+            <tr class="total bold">
+              <td class="money" colspan="{{totalColspan}}">TOTAL</td>
+              <td class="money">{{#valueFormatter}}{{totalLaunchAmount}}{{/valueFormatter}}</td>
+              {{#showRetentions}}
+                <td class="money">{{#valueFormatter}}{{totalRetention}}{{/valueFormatter}}</td>
+              {{/showRetentions}}
+              <td class="money">{{td}}</td>
+              <td>{{td}}</td>
+              <td>{{td}}</td>
+              {{#accountingAccount}}
+                <td></td>
+                <td></td>
+              {{/accountingAccount}}
+              {{#showFineInterestDiscount}}
+                <td class="money">{{#valueFormatter}}{{totalFine}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{totalInterest}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{totalDiscount}}{{/valueFormatter}}</td>
+              {{/showFineInterestDiscount}}
+              <td class="money">{{#valueFormatter}}{{totalPaid}}{{/valueFormatter}}</td>
+              <td class="money">{{#valueFormatter}}{{totalDiff}}{{/valueFormatter}}</td>
+              {{#showObservation}}
+                <td>{{td}}</td>
+              {{/showObservation}}
+            </tr>
+					</tfoot>
+					{{/noPayload}}
+        </table>
+      {{/financialLaunchIndex}}
+      {{^financialLaunchIndex}}
+        <table>
+          <thead class="frozen">
+            <tr class="tr_frozen tr_frozen_0">
+              <th><div></div></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Houve um problema ao buscar os dados</td>
+              </tr>
+            </tbody>
+        </table>
+      {{/financialLaunchIndex}}
+    </div>
+	</body>
+</html>

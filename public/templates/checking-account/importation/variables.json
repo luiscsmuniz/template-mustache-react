@@ -1,0 +1,55 @@
+{
+  "query": {
+    "must": [
+        {
+            "nested": {
+                "path": "downs",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "range": {
+                                    "downs.down_date": {
+                                        "gte": "2023-09-01",
+                                        "lte": "2023-10-31"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": {}
+            }
+        },
+        {
+            "nested": {
+                "path": "customs_clearance",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "exists": {
+                                    "field": "customs_clearance.id"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": null
+            }
+        }
+    ],
+    "must_not": [
+        {
+            "exists": {
+                "field": "deleted_at"
+            }
+        },
+        {
+            "exists": {
+                "field": "apportionments"
+            }
+        }
+    ]
+}
+}

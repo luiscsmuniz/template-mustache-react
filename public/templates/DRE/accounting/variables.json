@@ -1,0 +1,65 @@
+{
+  "query": {
+    "must": [
+        {
+            "range": {
+                "accrual_month": {
+                    "gte": "2012-01-01",
+                    "lte": "2024-02-28"
+                }
+            }
+        },
+        {
+            "nested": {
+                "path": "plan_account",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "bool": {
+                                    "must": [
+                                        {
+                                            "exists": {
+                                                "field": "plan_account.id"
+                                            }
+                                        },
+                                        {
+                                            "nested": {
+                                                "path": "plan_account.dre_category",
+                                                "query": {
+                                                    "bool": {
+                                                        "must": [
+                                                            {
+                                                                "exists": {
+                                                                    "field": "plan_account.dre_category.id"
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": {}
+            }
+        }
+    ],
+    "must_not": [
+        {
+            "exists": {
+                "field": "apportionments"
+            }
+        },
+        {
+            "exists": {
+                "field": "deleted_at"
+            }
+        }
+    ]
+}
+}

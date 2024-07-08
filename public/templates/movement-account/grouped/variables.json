@@ -1,0 +1,28 @@
+{
+	"query": {
+		"must": [
+			{
+				"range": {
+					"movement_date": {
+						"gte": "2024-01-18",
+						"lte": "2024-01-18"
+					}
+				}
+			},
+			{
+				"match": {
+					"movement_operation": "debit"
+				}
+			},
+			{
+				"range": {
+					"movement_amount": {
+						"gte": 0.2,
+						"lte": 200
+					}
+				}
+			}
+		],
+		"must_not": []
+	}
+}

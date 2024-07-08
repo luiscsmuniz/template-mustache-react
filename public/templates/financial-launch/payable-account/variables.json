@@ -1,0 +1,44 @@
+{
+  "query":{
+    "must": [
+      {
+        "match": {
+          "launch_operation": "payable_account"
+        }
+      }
+    ],
+    "must_not": [
+      {
+        "exists": {
+          "field": "deleted_at"
+        }
+      },
+      {
+        "exists": {
+          "field": "apportionments"
+        }
+      },
+      {
+        "nested": {
+          "path": "downs",
+          "query": {
+            "bool": {
+              "must_not": [
+                {
+                  "nested": {
+                    "path": "downs.bank_account",
+                    "query": {
+                      "exists": {
+                        "field": "downs.bank_account.id"
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

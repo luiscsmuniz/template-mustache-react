@@ -1,0 +1,16 @@
+{
+  "groupedBy": null,
+  "openNewTab": false,
+  "saveFilter": false,
+  "showFineInterestDiscount": true,
+  "showObservation": true,
+  "showAccountingAccount": true,
+  "showRetentions": true,
+  "showOnly": null,
+  "associatedTemplates": [{
+    "key": "detailedReport",
+    "template": {
+      "value": 53
+    }
+  }]
+}

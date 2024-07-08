@@ -1,0 +1,108 @@
+{
+  "query": {
+    "must": [
+        {
+            "bool": {
+                "should": [
+                    {
+                        "match": {
+                            "status": "partially_paid"
+                        }
+                    },
+                    {
+                        "match": {
+                            "status": "paid"
+                        }
+                    },
+                    {
+                        "match": {
+                            "status": "conciliated"
+                        }
+                    },
+                    {
+                        "match": {
+                            "status": "open"
+                        }
+                    },
+                    {
+                        "match": {
+                            "status": "waiting_review"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "nested": {
+                "path": "downs",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "range": {
+                                    "downs.down_date": {
+                                        "gte": "2024-06-01",
+                                        "lte": "2024-06-06"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": {}
+            }
+        },
+        {
+            "nested": {
+                "path": "bank_account",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "match": {
+                                    "bank_account.id": "1317"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": null
+            }
+        }
+    ],
+    "must_not": [
+        {
+            "exists": {
+                "field": "deleted_at"
+            }
+        },
+        {
+            "exists": {
+                "field": "apportionments"
+            }
+        },
+        {
+            "nested": {
+                "path": "downs",
+                "query": {
+                    "bool": {
+                        "should": [
+                            {
+                                "nested": {
+                                    "path": "downs.bank_account",
+                                    "query": {
+                                        "match": {
+                                            "downs.bank_account.id": "1317"
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": null
+            }
+        }
+    ]
+}
+}

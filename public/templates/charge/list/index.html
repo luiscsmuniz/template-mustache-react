@@ -1,0 +1,65 @@
+<html dir="ltr" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml">
+  <body class="report">
+    <div class="wrapper">
+      {{#chargeAccountIndex}}
+        <table>
+          <thead class="frozen fixed">
+              <tr class="tr_frozen tr_frozen_0">
+                <th>Sequência</th>
+                <th>Empresa</th>
+                <th>Conta</th>
+                <th>Carteira</th>
+                <th>Espécie</th>
+                <th>Nosso número</th>
+                <th>Nº documento</th>
+                <th>Sacado</th>
+                <th>Vencimento</th>
+                <th>Valor</th>
+                <th>Situação</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#payload}}
+                <tr>
+                  <td class='reports_link'><a href='{{url}}' onclick="window.open(this.href,'_blank'); return false;">{{sequence}}</td>
+                  <td>{{company_name}}</td>
+                  <td>{{bank_account.name}}</td>
+                  <td>{{portfolio_code}}</td>
+                  <td>{{kind}}</td>
+                  <td>{{our_number}}</td>
+                  <td>{{document_number}}</td>
+                  <td>{{entity_drawee.social_reason}}</td>
+                  <td>{{#dateFormatter}}{{due_date}}{{/dateFormatter}}</td>
+                  <td>{{#valueFormatter}}{{amount}}{{/valueFormatter}}</td>
+                  <td>
+                    <span class="{{#statusBadge}}{{status}}{{/statusBadge}} status_box">
+                      {{#statusTranslate}}{{status}}{{/statusTranslate}}
+                    </span>
+                  </td>
+                </tr>
+              {{/payload}}
+              {{^payload}}
+                <tr>
+                  <td colspan="11">SEM REGISTROS</td>
+                </tr>
+              {{/payload}}
+            </tbody>
+        </table>
+      {{/chargeAccountIndex}}
+      {{^chargeAccountIndex}}
+        <table>
+          <thead class="frozen">
+            <tr class="tr_frozen tr_frozen_0">
+              <th><div class="th_frozen th_frozen_rowspan_null"></div></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Houve um problema ao buscar os dados</td>
+              </tr>
+            </tbody>
+        </table>
+      {{/chargeAccountIndex}}
+    </div>
+	</body>
+</html>

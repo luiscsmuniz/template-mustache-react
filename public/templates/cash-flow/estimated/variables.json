@@ -1,0 +1,59 @@
+{
+  "query": {
+    "must": [
+        {
+            "range": {
+                "due_date": {
+                    "gte": "2024-06-01",
+                    "lte": "2024-06-06"
+                }
+            }
+        },
+        {
+            "bool": {
+                "should": [
+                    {
+                        "match": {
+                            "status": "open"
+                        }
+                    },
+                    {
+                        "match": {
+                            "status": "waiting_review"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "nested": {
+                "path": "bank_account",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "match": {
+                                    "bank_account.id": "1317"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": null
+            }
+        }
+    ],
+    "must_not": [
+        {
+            "exists": {
+                "field": "deleted_at"
+            }
+        },
+        {
+            "exists": {
+                "field": "apportionments"
+            }
+        }
+    ]
+}
+}

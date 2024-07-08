@@ -1,0 +1,32 @@
+{
+  "query": {
+    "must": [
+        {
+            "range": {
+                "movement_date": {
+                    "gte": "2024-04-22",
+                    "lte": "2024-04-22"
+                }
+            }
+        },
+        {
+            "nested": {
+                "path": "bank_account",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "match": {
+                                    "bank_account.id": "607"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": null
+            }
+        }
+    ],
+    "must_not": []
+  }
+}

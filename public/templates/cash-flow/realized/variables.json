@@ -1,0 +1,70 @@
+{
+  "query": {
+    "must": [
+        {
+            "range": {
+                "due_date": {
+                    "gte": "2024-06-01",
+                    "lte": "2024-06-06"
+                }
+            }
+        },
+        {
+            "bool": {
+                "should": [
+                    {
+                        "match": {
+                            "status": "partially_paid"
+                        }
+                    },
+                    {
+                        "match": {
+                            "status": "paid"
+                        }
+                    },
+                    {
+                        "match": {
+                            "status": "conciliated"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "nested": {
+                "path": "downs",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "nested": {
+                                    "path": "downs.bank_account",
+                                    "query": {
+                                        "match": {
+                                            "downs.bank_account.id": "1317"
+                                        }
+                                    },
+                                    "inner_hits": {}
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": null
+            }
+        }
+    ],
+    "must_not": [
+        {
+            "exists": {
+                "field": "deleted_at"
+            }
+        },
+        {
+            "exists": {
+                "field": "apportionments"
+            }
+        }
+    ]
+}
+}

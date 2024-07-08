@@ -1,0 +1,138 @@
+<html dir="ltr" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml">
+  <body class="report">
+    <div class="wrapper">
+      {{#bankAccountMovementIndex}}
+        <table>
+          <thead class="fixed">
+            <tr>
+              {{#isDetailed}}
+                <th>Nº DOC.</th>
+                <th>Descrição</th>
+                {{^groupedByPlanAccount}}
+                  <th>Plano de contas</th>
+                {{/groupedByPlanAccount}}
+                {{^groupedByCostCenter}}
+                  <th>Centro de custo</th>
+                {{/groupedByCostCenter}}
+                <th>Desembaraço</th>
+                <th>Embarque</th>
+                <th>Projeto</th>
+                {{^groupedByEntity}}
+                  <th>Entidade</th>
+                {{/groupedByEntity}}
+                <th>Meio de pagamento</th>
+                <th>Valor (R$)</th>
+              {{/isDetailed}}
+              {{^isDetailed}}
+                <th>Data</th>
+                <th>Débito (R$)</th>
+                <th>Crédito (R$)</th>
+                <th>Dif. (R$)</th>
+              {{/isDetailed}}
+              <th>Saldo</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr class="total bold">
+              <td class="money" colspan="{{lastBalanceColspan}}">Saldo anterior</td>
+              {{#error}}
+                <td class="">{{#initialBalanceError}}{{/initialBalanceError}}</td>
+              {{/error}}
+              {{^error}}
+                <td class="money">{{#valueFormatter}}{{lastBalance}}{{/valueFormatter}}</td>
+              {{/error}}
+            </tr>
+            {{#items}}
+              <tr>
+                <td>{{#dateFormatter}}{{movement_date}}{{/dateFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{debit_amount}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{credit_amount}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{diff}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{lastBalance}}{{/valueFormatter}}</td>
+              </tr>
+            {{/items}}
+            {{#groupedItems}}
+              <tr style="background-color: #d9d9d6;">
+                {{#groupedByMovementDate}}
+                  <td colspan="{{colSpan}}">
+                    {{#dateFormatter}}{{groupFieldName}}{{/dateFormatter}}
+                  </td>
+                {{/groupedByMovementDate}}
+                {{^groupedByMovementDate}}
+                  <td colspan="{{colSpan}}">
+                    {{groupFieldName}}
+                  </td>
+                {{/groupedByMovementDate}}
+              </tr>
+              {{#list}}
+                <tr>
+                  <td style="max-width: 120px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;" title="{{document_number}}">{{document_number}}</td>
+                  <td class="reports_link" style="max-width: 120px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;">
+                    <a
+                      href="{{url}}"
+                      onclick="window.open(this.href,'_blank'); return false;"
+                      title="{{description}}"
+                    >{{description}}</a>
+                  </td>
+                  {{^groupedByPlanAccount}}
+                    <td>{{plan_account.name}}</td>
+                  {{/groupedByPlanAccount}}
+                  {{^groupedByCostCenter}}
+                    <td>{{cost_center.name}}</td>
+                  {{/groupedByCostCenter}}
+                  <td>{{customs_clearance.reference}}</td>
+                  <td>{{shipment.reference}}</td>
+                  <td>{{project.name}}</td>
+                  {{^groupedByEntity}}
+                    <td>{{entity.social_reason}}</td>
+                  {{/groupedByEntity}}
+                  <td>{{payment_mean.name}}</td>
+                  <td class="money">{{#valueFormatter}}{{movement_amount}}{{/valueFormatter}}</td>
+                  <td class="money">{{#valueFormatter}}{{lastBalance}}{{/valueFormatter}}</td>
+                </tr>
+              {{/list}}
+              <tr class="total bold">
+                <td class="money" colspan="{{subTotalColspan}}">Subtotal</td>
+                <td class="money">{{#valueFormatter}}{{subTotalMovementAmount}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{subTotalLastBalance}}{{/valueFormatter}}</td>
+              </tr>
+            {{/groupedItems}}
+          </tbody>
+          <tfoot>
+            <tr class="total bold">
+              <td class="money" colspan="{{totalColspan}}">
+                {{#isGrouped}}
+                  Saldo final
+                {{/isGrouped}}
+                {{^isGrouped}}
+                  Total
+                {{/isGrouped}}
+              </td>
+              <td class="money">{{#valueFormatter}}{{totalDiff}}{{/valueFormatter}}</td>
+              <td class="money">{{#valueFormatter}}{{totalLastBalance}}{{/valueFormatter}}</td>
+            </tr>
+          </tfoot>
+        </table>
+      {{/bankAccountMovementIndex}}
+      {{^bankAccountMovementIndex}}
+        <table>
+          <thead>
+            <tr>
+              <th><div>Nº DOC.</div></th>
+              <th><div>Débito (R$)</div></th>
+              <th><div>Crédito (R$)</div></th>
+              <th><div>Dif. (R$)</div></th>
+              <th><div>Saldo</div></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="5">Houve um problema ao buscar os dados.</td>
+            </tr>
+          </tbody>
+        </table>
+      {{/bankAccountMovementIndex}}
+    </div>
+	</body>
+</html>

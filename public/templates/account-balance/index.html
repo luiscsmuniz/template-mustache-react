@@ -1,0 +1,42 @@
+<html dir="ltr" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml">
+  <body class="report">
+    <div class="wrapper">
+      {{#bankAccountMovementIndex}}
+        <table>
+          <thead class="frozen">
+              <tr class="tr_frozen tr_frozen_0">
+                <th><div>Conta</div></th>
+                <th><div>Saldo</div></th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#items}}
+                <tr>
+                  <td>{{bank_account_name}}</td>
+                  <td class="money">{{#valueFormatter}}{{sum}}{{/valueFormatter}}</td>
+                </tr>
+              {{/items}}
+              <tr class="total bold">
+                <td>TOTAL</td>
+                <td class="money">{{#valueFormatter}}{{total}}{{/valueFormatter}}</td>
+              </tr>
+            </tbody>
+        </table>
+      {{/bankAccountMovementIndex}}
+      {{^bankAccountMovementIndex}}
+        <table>
+          <thead class="frozen">
+            <tr class="tr_frozen tr_frozen_0">
+              <th><div></div></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Houve um problema ao buscar os dados</td>
+              </tr>
+            </tbody>
+        </table>
+      {{/bankAccountMovementIndex}}
+    </div>
+	</body>
+</html>

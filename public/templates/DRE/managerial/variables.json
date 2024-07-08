@@ -1,0 +1,66 @@
+{
+  "query": {
+    "must": [
+        {
+            "match": {
+                "is_conciliated": true
+            }
+        },
+        {
+            "nested": {
+                "path": "installments",
+                "query": {
+                    "bool": {
+                        "must": [
+                            {
+                                "range": {
+                                    "installments.accrual_month": {
+                                        "gte": "2023-09-01",
+                                        "lte": "2023-09-30"
+                                    }
+                                }
+                            },
+                            {
+                                "nested": {
+                                    "path": "installments.plan_account",
+                                    "query": {
+                                        "bool": {
+                                            "must": [
+                                                {
+                                                    "exists": {
+                                                        "field": "installments.plan_account.id"
+                                                    }
+                                                },
+                                                {
+                                                    "nested": {
+                                                        "path": "installments.plan_account.dre_category",
+                                                        "query": {
+                                                            "bool": {
+                                                                "must": [
+                                                                    {
+                                                                        "exists": {
+                                                                            "field": "installments.plan_account.dre_category.id"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        "inner_hits": {}
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "inner_hits": {}
+                                }
+                            }
+                        ]
+                    }
+                },
+                "inner_hits": {}
+            }
+        }
+    ],
+    "must_not": []
+}
+}

@@ -1,0 +1,6 @@
+{
+  "nested": {
+    "path": "downs",
+    "query": "{{query}}"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "associatedTemplates": [{
+    "key": "detailedBankMovement",
+    "template": {
+      "value": 65
+    }
+  }, {
+    "key": "detailedFinancialReport",
+    "template": {
+      "value": 53
+    }
+  }, {
+    "key": "detailedChargeReport",
+    "template": {
+      "value": 366
+    }
+  }]
+}

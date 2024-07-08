@@ -1,0 +1,16 @@
+{
+  "groupedBy": "movement_date",
+  "reportType": {
+    "label": "Detalhado",
+    "value": "detailed"
+  },
+  "associatedTemplates": [
+    {
+      "key": "detailedBankAccountMovement",
+      "template": {
+        "label": "Relatório de detalhamento do movimento de contas",
+        "value": "65"
+      }
+    }
+  ]
+}

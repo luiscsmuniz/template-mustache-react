@@ -1,0 +1,84 @@
+<div class="wrapper">
+  {{#financialLaunchIndex}}
+    <table>
+      <thead class="frozen fixed">
+          <tr class="tr_frozen tr_frozen_0">
+            <th>Data</th>
+            <th>Empresa</th>
+            <th>Entrada (R$)</th>
+            <th>Saída (R$)</th>
+            <th>Saldo (R$)</th>
+            <th>Descrição</th>
+            <th>Entidade</th>
+            <th>Situação</th>
+            <th>Projeto</th>
+            <th>Conta</th>
+            <th>Plano de contas</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#payload}}
+            {{#list}}
+              <tr>
+                <td>{{#dateFormatter}}{{date}}{{/dateFormatter}}</td>
+                <td>{{company_name}}</td>
+                <td class="money">{{#valueFormatter}}{{incoming_amount}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{outgoing_amount}}{{/valueFormatter}}</td>
+                <td class="money">{{#valueFormatter}}{{total}}{{/valueFormatter}}</td>
+                <td style="max-width: 120px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;" title="{{user_description}}">{{user_description}}</td>
+                <td>{{entity.social_reason}}</td>
+                <td>{{#statusTranslate}}{{status}}{{/statusTranslate}}</td>
+                <td>{{project_name}}</td>
+                <td>{{bank_account.name}}</td>
+                <td>{{plan_account_name}}</td>
+              </tr>
+            {{/list}}
+            <tr>
+              <td><strong>{{groupedDate}}</strong></td>
+              <td></td>
+              <td class="money"></td>
+              <td class="money"></td>
+              <td class="money"><strong>{{#valueFormatter}}{{subTotal}}{{/valueFormatter}}</strong></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          {{/payload}}
+          <tr>
+            <td class="money" colspan="2"><strong>Total</strong></td>
+            <td class="money"><strong>{{#valueFormatter}}{{totalIncomingAmount}}{{/valueFormatter}}</strong></td>
+            <td class="money"><strong>{{#valueFormatter}}{{totalOutgoingAmount}}{{/valueFormatter}}</strong></td>
+            <td class="money"><strong>{{#valueFormatter}}{{total}}{{/valueFormatter}}</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          {{^payload}}
+            <tr>
+              <td colspan="11">SEM REGISTROS</td>
+            </tr>
+          {{/payload}}
+        </tbody>
+    </table>
+  {{/financialLaunchIndex}}
+  {{^financialLaunchIndex}}
+    <table>
+      <thead class="frozen">
+        <tr class="tr_frozen tr_frozen_0">
+          <th><div class="th_frozen th_frozen_rowspan_null"></div></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Houve um problema ao buscar os dados</td>
+          </tr>
+        </tbody>
+    </table>
+  {{/financialLaunchIndex}}
+</div>
